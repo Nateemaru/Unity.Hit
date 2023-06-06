@@ -13,17 +13,21 @@ namespace _Scripts.Gameplay.States
         private LayerMask _targetMask;
         private float _shootingDelay;
         private VfxConfig _vFXConfig;
+        private Transform _firePoint;
+        private VfxConfig _gunFireVfx;
 
         private float _shootingTimer;
 
         public ShootState(AnimancerComponent animancer, AnimancerTransition actionClip
-            , LayerMask targetMask, float shootingDelay, VfxConfig vfxConfig)
+            , LayerMask targetMask, float shootingDelay, VfxConfig vfxConfig, Transform firePoint, VfxConfig gunFireVfx)
         {
             _animancer = animancer;
             _actionClip = actionClip;
             _targetMask = targetMask;
             _shootingDelay = shootingDelay;
             _vFXConfig = vfxConfig;
+            _firePoint = firePoint;
+            _gunFireVfx = gunFireVfx;
         }
 
         public override void Enter()
@@ -37,8 +41,9 @@ namespace _Scripts.Gameplay.States
             _shootingTimer -= Time.deltaTime;
             
             var ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-            if (_shootingTimer <= 0 && Physics.Raycast(ray, out var hit, _targetMask))
+            if (_shootingTimer <= 0 && Physics.Raycast(ray, out var hit, Mathf.Infinity, _targetMask))
             {
+                var gunFire = PoolHub.Instance.GetObject(_gunFireVfx).transform.position = _firePoint.position;
                 var bulletDecal = PoolHub.Instance.GetObject(_vFXConfig);
                 bulletDecal.transform.position = hit.point;
                 _shootingTimer = _shootingDelay;

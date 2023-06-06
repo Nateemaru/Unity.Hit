@@ -14,7 +14,10 @@ namespace _Scripts.Player
         [TabGroup("Param")][SerializeField] private LayerMask _targetMask;
         [TabGroup("Param")][SerializeField] private float _shootingDelay;
         [TabGroup("Param")][SerializeField] private int _bulletsInClip;
+        [TabGroup("Param")][SerializeField] private Transform _firePoint;
         [TabGroup("Param")][SerializeField] private VfxConfig _bulletDecalVfx;
+        [TabGroup("Param")][SerializeField] private VfxConfig _gunFireVfx;
+        
         [TabGroup("Anim")] [SerializeField] private AnimancerTransition _idleClip;
         [TabGroup("Anim")] [SerializeField] private AnimancerTransition _shootClip;
         [TabGroup("Anim")] [SerializeField] private AnimancerTransition _reloadClip;
@@ -37,7 +40,8 @@ namespace _Scripts.Player
         private void Init()
         {
             var idleState = new IdleState(_animancer, _idleClip);
-            var shootState = new ShootState(_animancer, _shootClip, _targetMask, _shootingDelay, _bulletDecalVfx);
+            var shootState = new ShootState(_animancer, _shootClip, 
+                _targetMask, _shootingDelay, _bulletDecalVfx, _firePoint, _gunFireVfx);
             
             _fsm = new FSM();
             _fsm.SetState(idleState);
@@ -49,7 +53,7 @@ namespace _Scripts.Player
         private bool IsTargetInScope()
         {
             var ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-            if (Physics.Raycast(ray, out var hit, _targetMask))
+            if (Physics.Raycast(ray, out var hit, Mathf.Infinity, _targetMask))
             {
                 return true;
             }
