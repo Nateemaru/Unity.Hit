@@ -6,6 +6,16 @@ namespace _Scripts.Installers
     {
         public override void InstallBindings()
         {
+            BindFPSUnlocker();
+        }
+
+        private void BindFPSUnlocker()
+        {
+            Container
+                .Bind<FPSUnlocker>()
+                .FromNewComponentOnNewGameObject()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }
