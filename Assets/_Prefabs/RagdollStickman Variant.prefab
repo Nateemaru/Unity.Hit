@@ -2166,6 +2166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7355352196706462413}
   - component: {fileID: 1761321738215433328}
+  - component: {fileID: 5681106262072544249}
   m_Layer: 6
   m_Name: StickWoman_Standart
   m_TagString: Untagged
@@ -2211,6 +2212,50 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5681106262072544249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154332712275435696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f052bb27fca7f934891aa35d348900cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbodies:
+  - {fileID: 5212303410285916565}
+  - {fileID: 4318566631000718010}
+  - {fileID: 4448633242217460785}
+  - {fileID: 1672363381611090574}
+  - {fileID: 8729013704646214058}
+  - {fileID: 1465466029959000193}
+  - {fileID: 4053476981549336405}
+  - {fileID: 603658746685066811}
+  - {fileID: 7504147172099310553}
+  - {fileID: 5819643804519949880}
+  - {fileID: 7456242545102700602}
+  - {fileID: 3166498133126322584}
+  - {fileID: 4221354030996830362}
+  - {fileID: 5970994368664534196}
+  - {fileID: 6848007749317823056}
+  _colliders:
+  - {fileID: 1099041127327984316}
+  - {fileID: 8494231699569011581}
+  - {fileID: 1169341251365854020}
+  - {fileID: 623626280702109694}
+  - {fileID: 320097978116944833}
+  - {fileID: 1021361419664212554}
+  - {fileID: 6629865640558994471}
+  - {fileID: 4506882266943425942}
+  - {fileID: 19663398188945793}
+  - {fileID: 3431530931666905398}
+  - {fileID: 3249404567964980486}
+  - {fileID: 1408399166146156768}
+  - {fileID: 8451669988162399476}
+  - {fileID: 8177667241621413648}
+  - {fileID: 2354488337079800943}
 --- !u!1 &6439407728563571457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,7 +3044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8035342838662675260, guid: 8191d671f3a23e848a359f6e0e19840b, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8035342838662675260, guid: 8191d671f3a23e848a359f6e0e19840b, type: 3}
       propertyPath: m_LocalPosition.x
