@@ -57,7 +57,7 @@ namespace _Scripts.AI
             
             if(_health.HasBeenDamaged())
             {
-                _puppetMaster.state = PuppetMaster.State.Dead;
+                _puppetMaster.state = PuppetMaster.State.Frozen;
             }
         }
 
