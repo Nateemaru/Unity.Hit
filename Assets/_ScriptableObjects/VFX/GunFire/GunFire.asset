@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GunFire
   m_EditorClassIdentifier: 
   _name: GunFire
-  _prefab: {fileID: 152484, guid: d3031a03db409fb47af0406d323ad835, type: 3}
+  _prefab: {fileID: 8190686665795140653, guid: b0673303849b3294a8e4e34201f1052a, type: 3}

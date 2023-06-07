@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Scripts.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, ITarget
     {
         private FSM _fsm;
 
@@ -15,6 +15,11 @@ namespace _Scripts.Player
         private void Init()
         {
             _fsm = new FSM();
+        }
+
+        public Transform GetTarget()
+        {
+            return transform;
         }
     }
 }

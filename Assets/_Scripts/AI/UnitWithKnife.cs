@@ -1,0 +1,29 @@
+using _Scripts.Gameplay.FSM;
+using _Scripts.Gameplay.States;
+using Animancer;
+using UnityEngine;
+
+namespace _Scripts.AI
+{
+    public class UnitWithKnife : EnemyBase
+    {
+        [SerializeField] private AnimancerTransition _idleClip;
+        [SerializeField] private AnimancerTransition _moveClip;
+        [SerializeField] private AnimancerTransition _attackClip;
+        
+        protected override void Init()
+        {
+            var idleState = new IdleState(_animancer, _idleClip);
+            var moveState = new EnemyMoveState(transform, _animancer, _moveClip, _config.Speed, _target.GetTarget());
+            
+            _fsm = new FSM();
+            _fsm.SetState(idleState);
+            
+            _fsm.AddAnyTransition(idleState, () => _target.GetTarget() == null 
+                                                   || _fsm.CurrentState.IsAnimationEnded
+                                                   && _ragdollEnabler.IsEnable);
+            
+            _fsm.AddAnyTransition(moveState, () => _target.GetTarget() != null && !_ragdollEnabler.IsEnable);
+        }
+    }
+}

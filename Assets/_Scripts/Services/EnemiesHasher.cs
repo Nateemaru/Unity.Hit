@@ -19,7 +19,7 @@ namespace _Scripts.Services
         {
         }
 
-        public void Add(IEnemy enemy)
+        public void Register(IEnemy enemy)
         {
             if(!Enemies.Contains(enemy))
             {
@@ -28,7 +28,7 @@ namespace _Scripts.Services
             }
         }
 
-        public void Remove(IEnemy enemy)
+        public void Unregister(IEnemy enemy)
         {
             if(Enemies.Contains(enemy))
             {

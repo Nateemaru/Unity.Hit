@@ -2,6 +2,7 @@ using _Scripts.Gameplay.FSM;
 using _Scripts.Services;
 using _Scripts.SO;
 using Animancer;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _Scripts.Gameplay.States
@@ -47,6 +48,16 @@ namespace _Scripts.Gameplay.States
                 var bulletDecal = PoolHub.Instance.GetObject(_vFXConfig);
                 bulletDecal.transform.position = hit.point;
                 _shootingTimer = _shootingDelay;
+
+                var enemy = hit.transform.root.GetComponent<HealthComponent>();
+
+                if(enemy != null)
+                    enemy.ApplyDamage(1);
+
+                if (hit.transform.TryGetComponent(out Rigidbody rb))
+                {
+                    rb.AddForce(ray.direction * 100, ForceMode.Impulse);
+                }
             }
         }
 
