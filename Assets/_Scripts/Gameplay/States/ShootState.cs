@@ -56,7 +56,7 @@ namespace _Scripts.Gameplay.States
 
                 if (hit.transform.TryGetComponent(out Rigidbody rb))
                 {
-                    rb.AddForce(new Vector3(ray.direction.x, 2, ray.direction.z).normalized * 50, ForceMode.Impulse);
+                    rb.AddForce(new Vector3(ray.direction.x, 2, ray.direction.z).normalized * 75, ForceMode.Impulse);
                 }
             }
         }

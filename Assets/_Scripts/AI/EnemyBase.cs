@@ -54,11 +54,6 @@ namespace _Scripts.AI
         protected void Update()
         {
             _fsm?.UpdateMachine();
-            
-            if(_health.HasBeenDamaged())
-            {
-                _puppetMaster.state = PuppetMaster.State.Frozen;
-            }
         }
 
         protected abstract void Init();
