@@ -5,6 +5,7 @@ using _Scripts.Player;
 using _Scripts.Services;
 using _Scripts.SO;
 using Animancer;
+using RootMotion.Dynamics;
 using UnityEngine;
 using Zenject;
 
@@ -17,8 +18,8 @@ namespace _Scripts.AI
         protected FSM _fsm;
         protected AnimancerComponent _animancer;
         protected HealthComponent _health;
-        protected RagdollEnabler _ragdollEnabler;
         protected ITarget _target;
+        protected PuppetMaster _puppetMaster;
         
         private EnemiesHasher _enemiesHasher;
 
@@ -32,7 +33,7 @@ namespace _Scripts.AI
         protected void Start()
         {
             _animancer = GetComponentInChildren<AnimancerComponent>();
-            _ragdollEnabler = GetComponentInChildren<RagdollEnabler>();
+            _puppetMaster = GetComponentInChildren<PuppetMaster>();
             _health = GetComponent<HealthComponent>();
             _health.Initialize(_config.Hp);
             _enemiesHasher.Register(this);
@@ -56,8 +57,7 @@ namespace _Scripts.AI
             
             if(_health.HasBeenDamaged())
             {
-                _animancer.Animator.enabled = false;
-                _ragdollEnabler.EnableRagdoll();
+                _puppetMaster.state = PuppetMaster.State.Dead;
             }
         }
 

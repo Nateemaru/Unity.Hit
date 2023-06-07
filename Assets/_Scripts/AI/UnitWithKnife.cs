@@ -21,9 +21,9 @@ namespace _Scripts.AI
             
             _fsm.AddAnyTransition(idleState, () => _target.GetTarget() == null 
                                                    || _fsm.CurrentState.IsAnimationEnded
-                                                   && _ragdollEnabler.IsEnable);
+                                                   && !_animancer.Animator.enabled);
             
-            _fsm.AddAnyTransition(moveState, () => _target.GetTarget() != null && !_ragdollEnabler.IsEnable);
+            _fsm.AddAnyTransition(moveState, () => _target.GetTarget() != null && _animancer.Animator.enabled);
         }
     }
 }
