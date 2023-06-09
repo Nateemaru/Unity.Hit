@@ -15,9 +15,12 @@ namespace _Scripts.AI
         {
             var idleState = new IdleState(_animancer, _idleClip);
             var moveState = new EnemyMoveState(transform, _animancer, _moveClip, _config.Speed, _target.GetTarget());
+            var ragdollState = new RagdollState(transform, _animancer, _ragdoll);
             
             _fsm = new FSM();
             _fsm.SetState(idleState);
+            
+            _fsm.AddAnyTransition(ragdollState, () => _health.HasBeenDamaged());
             
             _fsm.AddAnyTransition(idleState, () => _target.GetTarget() == null 
                                                    || _fsm.CurrentState.IsAnimationEnded

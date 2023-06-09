@@ -11,6 +11,13 @@ namespace _Scripts.CodeSugar
             origin.LookAt(p);
             origin.eulerAngles += new Vector3(0, offsetY);
         }
+        public static void LookAtOnlyY(this Transform origin, Vector3 lookAtTarget, float offsetY = 0)
+        {
+            var p = lookAtTarget;
+            p.y = origin.position.y;
+            origin.LookAt(p);
+            origin.eulerAngles += new Vector3(0, offsetY);
+        }
         
         public static void LookAtOnlyYSmooth(this Transform origin, Transform lookAtTarget, float smooth, float offsetY = 0)
         {

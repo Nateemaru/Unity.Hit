@@ -1,4 +1,6 @@
+using System;
 using _Scripts.Gameplay.FSM;
+using PathCreation;
 using UnityEngine;
 
 namespace _Scripts.Player
