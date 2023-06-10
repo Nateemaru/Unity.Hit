@@ -2,6 +2,7 @@ using System.Collections;
 using _Scripts.CodeSugar;
 using _Scripts.Gameplay.FSM;
 using _Scripts.Player;
+using _Scripts.Services;
 using Animancer;
 using RootMotion.Dynamics;
 using UnityEngine;
@@ -37,7 +38,6 @@ namespace _Scripts.Gameplay.States
 
         public override void Exit()
         {
-            _puppetMaster.targetRoot.LookAtOnlyY(_origin.position - _target.GetTarget().position);
             _puppetMaster.state = PuppetMaster.State.Alive;
             _isAnimationEnded = true;
         }

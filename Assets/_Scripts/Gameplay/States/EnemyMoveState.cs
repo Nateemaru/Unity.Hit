@@ -1,6 +1,8 @@
 using _Scripts.CodeSugar;
 using _Scripts.Gameplay.FSM;
+using _Scripts.Player;
 using Animancer;
+using RootMotion.Dynamics;
 using UnityEngine;
 
 namespace _Scripts.Gameplay.States
@@ -10,16 +12,16 @@ namespace _Scripts.Gameplay.States
         private Transform _origin;
         private AnimancerComponent _animancer;
         private AnimancerTransition _actionClip;
-        private float _speed;
-        private Transform _target;
+        private readonly PuppetMaster _puppetMaster;
+        private ITarget _target;
         
         public EnemyMoveState(Transform origin, AnimancerComponent animancer,
-            AnimancerTransition actionClip, float speed, Transform target)
+            AnimancerTransition actionClip, PuppetMaster puppetMaster, ITarget target)
         {
             _origin = origin;
             _animancer = animancer;
             _actionClip = actionClip;
-            _speed = speed;
+            _puppetMaster = puppetMaster;
             _target = target;
         }
         
@@ -33,13 +35,8 @@ namespace _Scripts.Gameplay.States
         {
             if (_target != null)
             {
-                /*var dir = _target.position - _origin.position;
-                dir.y = _origin.transform.position.y;
-
-                _origin.transform.position = 
-                    Vector3.MoveTowards(_origin.transform.position, dir, (_speed * Time.deltaTime));*/
-                
-                _origin.LookAtOnlyY(_target);
+                _puppetMaster.targetRoot.LookAtOnlyY(_target.GetTarget());
+                _origin.LookAtOnlyY(_target.GetTarget());
             }
         }
 

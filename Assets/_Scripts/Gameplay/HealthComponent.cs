@@ -8,7 +8,6 @@ namespace _Scripts.Gameplay
         protected float _maxHp;
         protected float _currentHp;
         protected bool _isDead;
-        protected bool _hasBeenDamaged;
         public float MaxHp => _maxHp;
 
         public float CurrentHp => _currentHp;
@@ -23,6 +22,5 @@ namespace _Scripts.Gameplay
         public abstract void Kill(Action callback = null);
 
         public abstract void Die();
-        public abstract bool HasBeenDamaged();
     }
 }

@@ -25,7 +25,6 @@ namespace _Scripts.Gameplay
             
             if (_currentHp > 0)
             {
-                _hasBeenDamaged = true;
             }
             else if(!_isDead) 
                 Die();
@@ -47,17 +46,6 @@ namespace _Scripts.Gameplay
 
             OnDeadAction = null;
             OnHealthChanged = null;
-        }
-
-        public override bool HasBeenDamaged()
-        {
-            if (_hasBeenDamaged)
-            {
-                _hasBeenDamaged = false;
-                return true;
-            }
-
-            return false;
         }
     }
 }
