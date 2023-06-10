@@ -33,10 +33,11 @@ namespace _Scripts.Gameplay.States
         {
             if (_target != null)
             {
-                var dir = _origin.position - _target.position;
-                dir.y = 0f;
+                /*var dir = _target.position - _origin.position;
+                dir.y = _origin.transform.position.y;
 
-                _origin.Translate(dir * (_speed * Time.deltaTime));
+                _origin.transform.position = 
+                    Vector3.MoveTowards(_origin.transform.position, dir, (_speed * Time.deltaTime));*/
                 
                 _origin.LookAtOnlyY(_target);
             }

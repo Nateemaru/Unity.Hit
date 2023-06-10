@@ -20,5 +20,7 @@ namespace _Scripts.Player
                 transform.position = _pathCreator.path.GetPointAtDistance(_distanceTravelled, _endOfPathInstruction);
             }
         }
+
+        public void SetSpeed(float speed) => _speed = speed;
     }
 }

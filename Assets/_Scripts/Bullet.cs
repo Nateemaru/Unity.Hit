@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using _Scripts.CodeSugar;
 using _Scripts.Gameplay;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _Scripts
@@ -27,9 +28,10 @@ namespace _Scripts
             if (other.TryGetComponent(out Rigidbody rb))
             {
                 transform.SetParent(rb.transform);
+                
                 var forceDir = (other.transform.position - Camera.main.transform.position).normalized;
                 forceDir.y = 0f;
-                rb.AddForce(forceDir * 25, ForceMode.Impulse);
+                rb.AddForce(forceDir * 100, ForceMode.Impulse);
             }
 
             transform.GetComponent<Collider>().enabled = false;

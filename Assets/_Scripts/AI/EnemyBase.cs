@@ -20,7 +20,7 @@ namespace _Scripts.AI
         protected AnimancerComponent _animancer;
         protected HealthComponent _health;
         protected ITarget _target;
-        protected RagdollController _ragdoll;
+        protected PuppetMaster _puppetMaster;
         
         private EnemiesHasher _enemiesHasher;
 
@@ -31,12 +31,17 @@ namespace _Scripts.AI
             _target = target;
         }
 
-        protected void Start()
+        protected virtual void Start()
         {
             _animancer = GetComponentInChildren<AnimancerComponent>();
-            _ragdoll = GetComponentInChildren<RagdollController>();
+            _puppetMaster = GetComponentInChildren<PuppetMaster>();
             _health = GetComponent<HealthComponent>();
             _health.Initialize(_config.Hp);
+            _health.OnDeadAction += () =>
+            {
+                _enemiesHasher.Unregister(this);
+                _puppetMaster.state = PuppetMaster.State.Dead;
+            };
             _enemiesHasher.Register(this);
             
             Init();
@@ -52,7 +57,7 @@ namespace _Scripts.AI
             _enemiesHasher.Unregister(this);
         }
 
-        protected void Update()
+        protected virtual void Update()
         {
             _fsm?.UpdateMachine();
         }
