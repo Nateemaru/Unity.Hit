@@ -3,6 +3,7 @@ using _Scripts.CodeSugar;
 using _Scripts.Gameplay.FSM;
 using _Scripts.Gameplay.States;
 using Animancer;
+using RootMotion.Dynamics;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace _Scripts.AI
 {
     public class HumanEnemy : EnemyBase
     {
+        [TabGroup("Components")][SerializeField] private PuppetMaster _puppetMaster;
         [TabGroup("Animations")][SerializeField] private AnimancerTransition _idleClip;
         [TabGroup("Animations")][SerializeField] private AnimancerTransition _moveClip;
         [TabGroup("Animations")][SerializeField] private AnimancerTransition _attackClip;
@@ -17,10 +19,13 @@ namespace _Scripts.AI
 
         private float _getUpTimer;
         private float _maxPinWeight = 1;
-        
+
         protected override void Init()
         {
             _getUpTimer = _getUpDelay;
+
+            _health.OnHealthChanged += () => _puppetMaster.pinWeight = 0f;
+            _health.OnDeadAction += () => _puppetMaster.Kill();
             
             var idleState = new IdleState(_animancer, _idleClip);
             var moveState = new EnemyMoveState(transform, _animancer, _moveClip, _target, _config.Speed);
@@ -29,11 +34,6 @@ namespace _Scripts.AI
             
             _fsm = new FSM();
             _fsm.SetState(idleState);
-
-            _health.OnHealthChanged += () =>
-            {
-                _puppetMaster.pinWeight = 0f;
-            };
             
             _fsm.AddAnyTransition(ragdollState, () => _puppetMaster.pinWeight < _maxPinWeight);
             

@@ -2,10 +2,16 @@ using UnityEngine;
 
 namespace _Scripts.AI.BodyParts
 {
-    public class Leg : MonoBehaviour, IBodyPart
+    [RequireComponent(typeof(Rigidbody))]
+    public class Leg : BodyPart
     {
-        public void Punch()
+        public override void Punch(Vector3 forceDirection)
         {
+            forceDirection.y = 0f;
+            forceDirection.Normalize();
+            transform.GetComponent<Rigidbody>().AddForce(forceDirection * 25, ForceMode.Impulse);
+            
+            _targetHealth.ApplyDamage(1);
         }
     }
 }

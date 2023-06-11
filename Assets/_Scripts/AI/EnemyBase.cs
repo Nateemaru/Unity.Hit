@@ -17,7 +17,6 @@ namespace _Scripts.AI
     {
         [TabGroup("Params")][SerializeField] protected UnitConfig _config;
         [TabGroup("Components")][SerializeField] protected AnimancerComponent _animancer;
-        [TabGroup("Components")][SerializeField] protected PuppetMaster _puppetMaster;
 
         protected FSM _fsm;
         protected HealthComponent _health;
@@ -39,7 +38,6 @@ namespace _Scripts.AI
             _health.OnDeadAction += () =>
             {
                 _enemiesHasher.Unregister(this);
-                _puppetMaster.Kill();
             };
             _enemiesHasher.Register(this);
             

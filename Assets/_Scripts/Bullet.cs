@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using _Scripts.CodeSugar;
-using _Scripts.Gameplay;
-using DG.Tweening;
+using _Scripts.AI.BodyParts;
 using UnityEngine;
 
 namespace _Scripts
@@ -23,19 +19,10 @@ namespace _Scripts
         {
             transform.GetComponent<Collider>().enabled = false;
             _isHit = true;
+            transform.SetParent(other.transform);
             
-            if(other.transform.root.GetComponentInChildren<HealthComponent>() != null)
-                other.transform.root.GetComponentInChildren<HealthComponent>().ApplyDamage(1);
-            
-            if (other.TryGetComponent(out Rigidbody rb))
-            {
-                transform.SetParent(rb.transform);
-                
-                var forceDir = (other.transform.position - Camera.main.transform.position);
-                forceDir.y = 0f;
-                forceDir.Normalize();
-                rb.AddForce(forceDir * 50, ForceMode.Impulse);
-            }
+            if(other.TryGetComponent(out BodyPart bodyPart))
+                bodyPart.Punch(other.transform.position - Camera.main.transform.position);
         }
     }
 }

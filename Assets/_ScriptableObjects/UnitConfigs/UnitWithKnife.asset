@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _speed: 1
-  _hp: 11
+  _hp: 4
   _attackDistance: 3
