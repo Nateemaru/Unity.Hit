@@ -33,7 +33,7 @@ namespace _Scripts.Gameplay
         public override void Kill(Action callback = null)
         {
             callback?.Invoke();
-            Die();
+            ApplyDamage(_maxHp);
         }
 
         public override void Die()

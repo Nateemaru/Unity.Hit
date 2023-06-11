@@ -6,6 +6,7 @@ using _Scripts.Services;
 using _Scripts.SO;
 using Animancer;
 using RootMotion.Dynamics;
+using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
@@ -14,13 +15,13 @@ namespace _Scripts.AI
 {
     public abstract class EnemyBase : MonoBehaviour, IEnemy
     {
-        [SerializeField] protected UnitConfig _config;
+        [TabGroup("Params")][SerializeField] protected UnitConfig _config;
+        [TabGroup("Components")][SerializeField] protected AnimancerComponent _animancer;
+        [TabGroup("Components")][SerializeField] protected PuppetMaster _puppetMaster;
 
         protected FSM _fsm;
-        protected AnimancerComponent _animancer;
         protected HealthComponent _health;
         protected ITarget _target;
-        protected PuppetMaster _puppetMaster;
         
         private EnemiesHasher _enemiesHasher;
 
@@ -33,14 +34,12 @@ namespace _Scripts.AI
 
         protected virtual void Start()
         {
-            _animancer = GetComponentInChildren<AnimancerComponent>();
-            _puppetMaster = GetComponentInChildren<PuppetMaster>();
             _health = GetComponent<HealthComponent>();
             _health.Initialize(_config.Hp);
             _health.OnDeadAction += () =>
             {
                 _enemiesHasher.Unregister(this);
-                _puppetMaster.state = PuppetMaster.State.Dead;
+                _puppetMaster.Kill();
             };
             _enemiesHasher.Register(this);
             
@@ -59,6 +58,9 @@ namespace _Scripts.AI
 
         protected virtual void Update()
         {
+            if (_health.IsDead)
+                return;
+            
             _fsm?.UpdateMachine();
         }
 

@@ -10,7 +10,6 @@ namespace _Scripts
     public class Bullet : MonoBehaviour
     {
         [SerializeField] private float _speed;
-        [SerializeField] private float _disableDelay;
 
         private bool _isHit;
 
@@ -22,30 +21,21 @@ namespace _Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.transform.root.GetComponent<HealthComponent>() != null)
-                other.transform.root.GetComponent<HealthComponent>().ApplyDamage(1);
+            transform.GetComponent<Collider>().enabled = false;
+            _isHit = true;
+            
+            if(other.transform.root.GetComponentInChildren<HealthComponent>() != null)
+                other.transform.root.GetComponentInChildren<HealthComponent>().ApplyDamage(1);
             
             if (other.TryGetComponent(out Rigidbody rb))
             {
                 transform.SetParent(rb.transform);
                 
-                var forceDir = (other.transform.position - Camera.main.transform.position).normalized;
+                var forceDir = (other.transform.position - Camera.main.transform.position);
                 forceDir.y = 0f;
-                rb.AddForce(forceDir * 100, ForceMode.Impulse);
+                forceDir.Normalize();
+                rb.AddForce(forceDir * 50, ForceMode.Impulse);
             }
-
-            transform.GetComponent<Collider>().enabled = false;
-            _isHit = true;
-            StartCoroutine(DisableRoutine());
-        }
-
-        private IEnumerator DisableRoutine()
-        {
-            yield return new WaitForSeconds(_disableDelay);
-            transform.parent = null;
-            _isHit = false;
-            transform.GetComponent<Collider>().enabled = true;
-            transform.Disable();
         }
     }
 }

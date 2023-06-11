@@ -1,28 +1,23 @@
-using _Scripts.CodeSugar;
 using _Scripts.Gameplay.FSM;
 using _Scripts.Player;
 using Animancer;
-using RootMotion.Dynamics;
 using UnityEngine;
 
 namespace _Scripts.Gameplay.States
 {
-    public class EnemyMoveState : StateBase
+    public class HumanoidAttackState : StateBase
     {
         private readonly Transform _origin;
         private readonly AnimancerComponent _animancer;
         private readonly AnimancerTransition _actionClip;
         private readonly ITarget _target;
-        private readonly float _speed;
 
-        public EnemyMoveState(Transform origin, AnimancerComponent animancer,
-            AnimancerTransition actionClip, ITarget target, float speed)
+        public HumanoidAttackState(Transform origin, AnimancerComponent animancer, AnimancerTransition actionClip, ITarget target)
         {
             _origin = origin;
             _animancer = animancer;
             _actionClip = actionClip;
             _target = target;
-            _speed = speed;
         }
         
         public override void Enter()
@@ -33,15 +28,6 @@ namespace _Scripts.Gameplay.States
 
         public override void Update()
         {
-            if (_target != null)
-            {
-                var dir = _target.GetTarget().position - _origin.position;
-                dir.y = _origin.transform.position.y;
-                
-                _origin.transform.position = 
-                    Vector3.MoveTowards(_origin.transform.position, dir, (_speed * Time.deltaTime));
-                _origin.LookAtOnlyY(_target.GetTarget());
-            }
         }
 
         public override void Exit()

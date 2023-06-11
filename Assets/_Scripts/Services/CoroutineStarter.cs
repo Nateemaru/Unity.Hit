@@ -13,11 +13,8 @@ namespace _Scripts.Services
         {
             if (_instance != null && _instance != this)
                 Destroy(gameObject);
-            else
-            {
-                _instance = this;
-                DontDestroyOnLoad(this);
-            }
+            
+            _instance = this;
         }
 
         public void StartRoutine(IEnumerator enumerator)

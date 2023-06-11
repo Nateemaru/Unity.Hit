@@ -11,35 +11,32 @@ namespace _Scripts.Gameplay.States
 {
     public class RagdollState : StateBase
     {
-        private readonly Transform _origin;
         private readonly AnimancerComponent _animancerComponent;
         private readonly PuppetMaster _puppetMaster;
-        private readonly ITarget _target;
+        private readonly float _pinWeightDelta = 0.4f;
 
-        public RagdollState(Transform origin, AnimancerComponent animancerComponent,
-            PuppetMaster puppetMaster, ITarget target)
+        public RagdollState(AnimancerComponent animancerComponent, PuppetMaster puppetMaster)
         {
-            _origin = origin;
             _animancerComponent = animancerComponent;
             _puppetMaster = puppetMaster;
-            _target = target;
         }
         
         public override void Enter()
         {
             _animancerComponent.Stop();
-            _puppetMaster.state = PuppetMaster.State.Dead;
-            _isAnimationEnded = false;
+            _puppetMaster.Kill();
+            _isAnimationEnded = true;
         }
 
         public override void Update()
         {
+            _puppetMaster.pinWeight += _pinWeightDelta * Time.deltaTime;
         }
 
         public override void Exit()
         {
-            _puppetMaster.state = PuppetMaster.State.Alive;
-            _isAnimationEnded = true;
+            _puppetMaster.pinWeight = 1f;
+            _puppetMaster.Resurrect();
         }
     }
 }
