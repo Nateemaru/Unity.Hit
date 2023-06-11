@@ -15,15 +15,10 @@ namespace _Scripts.AI
         [TabGroup("Animations")][SerializeField] private AnimancerTransition _idleClip;
         [TabGroup("Animations")][SerializeField] private AnimancerTransition _moveClip;
         [TabGroup("Animations")][SerializeField] private AnimancerTransition _attackClip;
-        [TabGroup("Params")][SerializeField] private float _getUpDelay;
-
-        private float _getUpTimer;
         private float _maxPinWeight = 1;
 
         protected override void Init()
         {
-            _getUpTimer = _getUpDelay;
-
             _health.OnHealthChanged += () => _puppetMaster.pinWeight = 0f;
             _health.OnDeadAction += () => _puppetMaster.Kill();
             
