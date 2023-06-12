@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BigHumanConfig
   m_EditorClassIdentifier: 
   _damage: 1
-  _speed: 1
+  _speed: 0
   _hp: 8
   _attackDistance: 3

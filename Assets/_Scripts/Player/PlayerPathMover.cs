@@ -1,15 +1,16 @@
 using System;
 using _Scripts.CodeSugar;
+using _Scripts.Services.EventBusService;
+using _Scripts.Services.EventBusService.EventsInterfaces;
 using PathCreation;
 using UnityEngine;
 
 namespace _Scripts.Player
 {
-    public class PathFollow : MonoBehaviour
+    public class PlayerPathMover : MovementBase
     {
         [SerializeField] private PathCreator _pathCreator;
         [SerializeField] private EndOfPathInstruction _endOfPathInstruction;
-        [SerializeField] private float _speed = 5;
         private float _distanceTravelled;
 
         void Update()
@@ -21,6 +22,9 @@ namespace _Scripts.Player
             }
         }
 
-        public void SetSpeed(float speed) => _speed = speed;
+        public override void SetSpeed(float value)
+        {
+            _speed = value;
+        }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using _Scripts.CodeSugar;
 using _Scripts.Gameplay.FSM;
-using _Scripts.Gameplay.States;
+using _Scripts.Gameplay.FSM.States;
 using Animancer;
 using RootMotion.Dynamics;
 using Sirenix.OdinInspector;

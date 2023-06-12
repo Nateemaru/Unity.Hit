@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -16,10 +17,10 @@ namespace _Scripts.Services.EventBusService
             foreach (Type t in subscriberTypes)
             {
                 if (!_subscribers.ContainsKey(t))
-                {
                     _subscribers[t] = new SubscribersList<IGlobalSubscriber>();
-                }
-                _subscribers[t].Add(subscriber);
+                
+                if(!_subscribers[t].List.Contains(subscriber))
+                    _subscribers[t].Add(subscriber);
             }
         }
         
@@ -33,33 +34,26 @@ namespace _Scripts.Services.EventBusService
             }
         }
         
-        public static void RaiseEvent<TSubscriber>(Action<TSubscriber> action)
-            where TSubscriber : class, IGlobalSubscriber
+        public static void RaiseEvent<TSubscriber>(Action<TSubscriber> action) where TSubscriber : class, IGlobalSubscriber
         {
             if (_subscribers.ContainsKey(typeof(TSubscriber)))
             {
                 SubscribersList<IGlobalSubscriber> subscribers = _subscribers[typeof(TSubscriber)];
 
-                if (!subscribers.List.IsNullOrEmpty())
+                subscribers.Executing = true;
+                foreach (IGlobalSubscriber subscriber in subscribers.List.ToList())
                 {
-                    subscribers.Executing = true;
-                    foreach (IGlobalSubscriber subscriber in subscribers.List)
+                    try
                     {
-                        try
-                        {
-                            if(subscriber != null)
-                                action.Invoke(subscriber as TSubscriber);
-                            else
-                                Unsubscribe(subscriber as TSubscriber);
-                        }
-                        catch (Exception e)
-                        {
-                            Debug.LogError(e);
-                        }
+                        action.Invoke(subscriber as TSubscriber);
                     }
-                    subscribers.Executing = false;
-                    subscribers.Cleanup();
+                    catch (Exception e)
+                    {
+                        Debug.LogError(e);
+                    }
                 }
+                subscribers.Executing = false;
+                subscribers.Cleanup();
             }
         }
     }

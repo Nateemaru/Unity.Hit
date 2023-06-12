@@ -3,6 +3,7 @@ using _Scripts.Gameplay;
 using _Scripts.Gameplay.FSM;
 using _Scripts.Player;
 using _Scripts.Services;
+using _Scripts.Services.EventBusService.EventsInterfaces;
 using _Scripts.SO;
 using Animancer;
 using RootMotion.Dynamics;
@@ -10,6 +11,7 @@ using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
+using EventBus = _Scripts.Services.EventBusService.EventBus;
 
 namespace _Scripts.AI
 {
@@ -38,6 +40,7 @@ namespace _Scripts.AI
             _health.OnDeadAction += () =>
             {
                 _enemiesHasher.Unregister(this);
+                EventBus.RaiseEvent<IEnemyDiedSubscriber>(item => item.OnEnemyDied(transform.parent));
             };
             _enemiesHasher.Register(this);
             

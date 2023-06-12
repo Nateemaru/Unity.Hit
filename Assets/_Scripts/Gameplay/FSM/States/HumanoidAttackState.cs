@@ -1,9 +1,8 @@
-using _Scripts.Gameplay.FSM;
 using _Scripts.Player;
 using Animancer;
 using UnityEngine;
 
-namespace _Scripts.Gameplay.States
+namespace _Scripts.Gameplay.FSM.States
 {
     public class HumanoidAttackState : StateBase
     {

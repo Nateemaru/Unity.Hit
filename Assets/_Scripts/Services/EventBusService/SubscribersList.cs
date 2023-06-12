@@ -27,17 +27,13 @@ namespace _Scripts.Services.EventBusService
                 }
             }
             else
-            {
                 List.Remove(subscriber);
-            }
         }
 
         public void Cleanup()
         {
             if (!_needsCleanUp)
-            {
                 return;
-            }
 
             List.RemoveAll(s => s == null);
             _needsCleanUp = false;

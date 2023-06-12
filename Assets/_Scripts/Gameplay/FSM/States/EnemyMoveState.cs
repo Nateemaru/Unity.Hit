@@ -1,11 +1,9 @@
 using _Scripts.CodeSugar;
-using _Scripts.Gameplay.FSM;
 using _Scripts.Player;
 using Animancer;
-using RootMotion.Dynamics;
 using UnityEngine;
 
-namespace _Scripts.Gameplay.States
+namespace _Scripts.Gameplay.FSM.States
 {
     public class EnemyMoveState : StateBase
     {

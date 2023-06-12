@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6830128994939780453}
   - component: {fileID: 8017136861129052286}
   - component: {fileID: 4529126368202774321}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BayonetKnife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,6 +173,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 50cddab5447e25b4b9360be96b847851, type: 3}
       propertyPath: m_Name
       value: Bayonet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 50cddab5447e25b4b9360be96b847851, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
