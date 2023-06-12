@@ -11,9 +11,9 @@ namespace _Scripts.Services
     {
         [ReadOnly] public List<IEnemy> Enemies = new List<IEnemy>();
 
-        public delegate void OnAmountChanged(int amount);
+        public delegate void EnemiesChanged(int amount);
         
-        public OnAmountChanged OnEnemiesAmountChanged;
+        public EnemiesChanged OnEnemiesAmountChanged;
         
         public EnemiesHasher()
         {
