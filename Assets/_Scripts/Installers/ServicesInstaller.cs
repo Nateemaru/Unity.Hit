@@ -9,6 +9,16 @@ namespace _Scripts.Installers
         {
             BindPoolHub();
             BindEnemiesHasher();
+            BindCamerasHasher();
+        }
+
+        private void BindCamerasHasher()
+        {
+            Container
+            .Bind<CamerasHasher>()
+            .FromNew()
+            .AsSingle()
+            .NonLazy();
         }
 
         private void BindPoolHub()
