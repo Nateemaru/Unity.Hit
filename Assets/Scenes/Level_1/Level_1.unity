@@ -250,7 +250,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173974383}
-  m_LocalRotation: {x: 0.054735053, y: 0.0070416075, z: -0.000386011, w: 0.998476}
+  m_LocalRotation: {x: 0.054735072, y: 0.007041573, z: -0.0003860093, w: 0.998476}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -787,7 +787,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1352,7 +1352,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.054735053, y: 0.0070416075, z: -0.000386011, w: 0.998476}
+  m_LocalRotation: {x: 0.054735072, y: 0.007041573, z: -0.0003860093, w: 0.998476}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3134,6 +3134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret_Teleporter
       objectReference: {fileID: 0}
+    - target: {fileID: 6528682194790930990, guid: 1c64e6e6543953d42b5ed0e751e93e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6965913696723890277, guid: 1c64e6e6543953d42b5ed0e751e93e19, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -3177,6 +3181,10 @@ PrefabInstance:
     - target: {fileID: 6965913696723890277, guid: 1c64e6e6543953d42b5ed0e751e93e19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8705623423504615155, guid: 1c64e6e6543953d42b5ed0e751e93e19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3946,6 +3954,10 @@ PrefabInstance:
     - target: {fileID: 9053139565168224641, guid: 333d72877b8f7504ebad77fd846fef41, type: 3}
       propertyPath: m_Name
       value: Conditioner
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053139565168224641, guid: 333d72877b8f7504ebad77fd846fef41, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
