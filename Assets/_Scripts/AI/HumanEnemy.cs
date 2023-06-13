@@ -38,6 +38,7 @@ namespace _Scripts.AI
             _fsm.AddAnyTransition(moveState, () => _target != null
                                                    && _fsm.CurrentState.IsAnimationEnded
                                                    && !transform.IsTargetNearby(_target.GetTarget(), _config.AttackDistance)
+                                                   && transform.IsTargetNearby(_target.GetTarget(), 14)
                                                    && _puppetMaster.pinWeight >= _maxPinWeight);
             
             _fsm.AddAnyTransition(attackState, () => _target != null 

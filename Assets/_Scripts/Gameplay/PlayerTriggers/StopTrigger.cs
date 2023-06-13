@@ -6,14 +6,12 @@ using UnityEngine;
 
 namespace _Scripts.Gameplay.PlayerTriggers
 {
-    public class JumpTrigger : MonoBehaviour
+    public class StopTrigger : MonoBehaviour
     {
         private void OnTriggerEnter(Collider other)
         {
             if(other.TryGetComponent(out MovementBase movementBase))
-            {
-                EventBus.RaiseEvent<IPlayerJumpSubscriber>(item => item.OnPlayerJumped());
-            }
+                EventBus.RaiseEvent<IPlayerStopSubscriber>(item => item.OnPlayerStopped());
         }
     }
 }

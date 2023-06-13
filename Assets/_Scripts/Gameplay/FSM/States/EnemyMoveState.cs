@@ -13,6 +13,8 @@ namespace _Scripts.Gameplay.FSM.States
         private readonly ITarget _target;
         private readonly float _speed;
 
+        private float _rotSmooth = 3f;
+
         public EnemyMoveState(Transform origin, AnimancerComponent animancer,
             AnimancerTransition actionClip, ITarget target, float speed)
         {
@@ -33,12 +35,12 @@ namespace _Scripts.Gameplay.FSM.States
         {
             if (_target != null)
             {
-                var dir = _target.GetTarget().position - _origin.position;
+                var dir = _target.GetTarget().position;
                 dir.y = _origin.transform.position.y;
                 
                 _origin.transform.position = 
                     Vector3.MoveTowards(_origin.transform.position, dir, (_speed * Time.deltaTime));
-                _origin.LookAtOnlyY(_target.GetTarget());
+                _origin.LookAtOnlyYSmooth(_target.GetTarget(), _rotSmooth);
             }
         }
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1571045981083341554
+--- !u!1 &5186856909743115239
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7492509426235801916}
-  - component: {fileID: 3558139158090950811}
-  - component: {fileID: 5702008479510725231}
+  - component: {fileID: 9010034018428494938}
+  - component: {fileID: 5539318211150022326}
+  - component: {fileID: 7178897886991402948}
   m_Layer: 0
-  m_Name: PlayerJumpTrigger
+  m_Name: ActivateEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7492509426235801916
+--- !u!4 &9010034018428494938
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571045981083341554}
+  m_GameObject: {fileID: 5186856909743115239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15}
+  m_LocalPosition: {x: 0, y: 0.04, z: 15.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3558139158090950811
+--- !u!135 &5539318211150022326
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571045981083341554}
+  m_GameObject: {fileID: 5186856909743115239}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -54,15 +54,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5702008479510725231
+--- !u!114 &7178897886991402948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571045981083341554}
+  m_GameObject: {fileID: 5186856909743115239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a43e9c6af1c4f089737abe2c6a01464, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f453c55e3fc4715b4fde4c2c9ab88e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemies: []

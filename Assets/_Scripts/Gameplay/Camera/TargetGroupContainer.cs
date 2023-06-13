@@ -10,10 +10,6 @@ namespace _Scripts.Gameplay.Camera
     [RequireComponent(typeof(CinemachineTargetGroup))]
     public class TargetGroupContainer : MonoBehaviour, IEnemyDiedSubscriber
     {
-        [SerializeField] private EnemyBase[] _enemies;
-        [SerializeField] private float _weight = 1; 
-        [SerializeField] private float _radius = 0; 
-        
         private CinemachineTargetGroup _targetGroup;
 
         public Action OnContainerIsEmpty;
@@ -22,9 +18,6 @@ namespace _Scripts.Gameplay.Camera
         {
             _targetGroup = GetComponent<CinemachineTargetGroup>();
             EventBus.Subscribe(this);
-
-            for (int i = 0; i < _enemies.Length; i++)
-                _targetGroup.AddMember(_enemies[i].transform, _weight, _radius);
         }
 
         private void OnEnable()
