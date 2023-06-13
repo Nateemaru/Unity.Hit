@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6377768399428828361}
   - component: {fileID: 605482345791867695}
   - component: {fileID: 6190560029743354581}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: StopWhileEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}

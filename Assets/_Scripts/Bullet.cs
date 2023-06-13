@@ -14,7 +14,9 @@ namespace _Scripts
         private void Update()
         {
             if(!_isHit)
+            {
                 transform.position += transform.forward * (_speed * Time.deltaTime);
+            }
         }
 
         private void OnTriggerEnter(Collider other)

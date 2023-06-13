@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9010034018428494938}
   - component: {fileID: 5539318211150022326}
   - component: {fileID: 7178897886991402948}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ActivateEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,4 +66,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f453c55e3fc4715b4fde4c2c9ab88e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemies: []
