@@ -1,15 +1,18 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using _Scripts.CodeSugar;
 using _Scripts.Factories;
 using _Scripts.SO;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace _Scripts.Services
 {
     public class ObjectPool : MonoBehaviour
     {
-        [SerializeField] private VfxConfig _type;
+        [SerializeField] private PoolObjectConfig _config;
         [SerializeField] private Transform _container;
         [SerializeField] private bool _autoExpand;
         [SerializeField] private int _minCapacity;
@@ -18,7 +21,7 @@ namespace _Scripts.Services
         private bool _firstInitExecuted;
         private GameObjectFactory _factory;
 
-        public VfxConfig Type => _type;
+        public PoolObjectConfig Type => _config;
 
         [Inject]
         private void Construct(GameObjectFactory factory)
@@ -44,9 +47,9 @@ namespace _Scripts.Services
             _firstInitExecuted = true;
         }
 
-        public void InitPoolAfterStart(VfxConfig type, Transform container, bool autoExpand, int minCapacity)
+        public void InitPoolAfterStart(PoolObjectConfig type, Transform container, bool autoExpand, int minCapacity)
         {
-            _type = type;
+            _config = type;
             _container = container;
             _autoExpand = autoExpand;
             _minCapacity = minCapacity;
@@ -56,7 +59,7 @@ namespace _Scripts.Services
 
         private GameObject CreateObject(bool defaultCondition = false)
         {
-            var createdObject = _factory.CreateGameObject(_type.Prefab);
+            var createdObject = _factory.CreateGameObject(_config.Prefab);
             createdObject.transform.parent = _container;
             createdObject.SetActive(defaultCondition);
             _pool.Add(createdObject);

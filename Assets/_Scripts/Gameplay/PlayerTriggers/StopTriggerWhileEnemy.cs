@@ -10,6 +10,8 @@ namespace _Scripts.Gameplay.PlayerTriggers
     {
         [SerializeField] private TargetGroupContainer _targetGroupContainer;
 
+        private bool _isAlreadyTriggered;
+
         private void Start()
         {
             _targetGroupContainer.OnContainerIsEmpty += MovePlayer;
@@ -18,12 +20,16 @@ namespace _Scripts.Gameplay.PlayerTriggers
         private void MovePlayer()
         {
             EventBus.RaiseEvent<IPlayerMoveSubscriber>(item => item.OnPlayerMove());
+            _isAlreadyTriggered = true;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent(out MovementBase movementBase))
-                EventBus.RaiseEvent<IPlayerStopSubscriber>(item => item.OnPlayerStopped());
+            if (!_isAlreadyTriggered)
+            {
+                if(other.TryGetComponent(out MovementBase movementBase))
+                    EventBus.RaiseEvent<IPlayerStopSubscriber>(item => item.OnPlayerStopped());
+            }
         }
     }
 }

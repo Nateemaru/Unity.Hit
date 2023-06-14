@@ -10,7 +10,7 @@ namespace _Scripts.Services
     {
         private static PoolHub _instance;
         private ObjectPool[] _setupPools;
-        private Dictionary<VfxConfig, ObjectPool> _pools;
+        private Dictionary<PoolObjectConfig, ObjectPool> _pools;
         private PoolFactory _factory;
 
         public static PoolHub Instance => _instance;
@@ -26,11 +26,9 @@ namespace _Scripts.Services
             if (_instance != null && _instance != this)
                 Destroy(gameObject);
             else
-            {
                 _instance = this;
-            }
             
-            _pools = new Dictionary<VfxConfig, ObjectPool>();
+            _pools = new Dictionary<PoolObjectConfig, ObjectPool>();
             _setupPools = GetComponentsInChildren<ObjectPool>();
 
             foreach (var pool in _setupPools)
@@ -39,7 +37,7 @@ namespace _Scripts.Services
             }
         }
     
-        private void CreatePool(VfxConfig poolType, Transform parent = null)
+        private void CreatePool(PoolObjectConfig poolType, Transform parent = null)
         {
             if (_pools.ContainsKey(poolType))
                 return;
@@ -49,12 +47,12 @@ namespace _Scripts.Services
             newPool = _factory.CreatePool(gameObject);
             
             var container = parent != null ? parent : transform;
-            newPool.InitPoolAfterStart(poolType, container, true, 1);
+            newPool.InitPoolAfterStart(poolType, container, true, 5);
 
             _pools.Add(poolType, newPool);
         }
 
-        public GameObject GetObject(VfxConfig type, Transform parent = null)
+        public GameObject GetObject(PoolObjectConfig type, Transform parent = null)
         {
             if (!_pools.ContainsKey(type))
                 CreatePool(type, parent);
