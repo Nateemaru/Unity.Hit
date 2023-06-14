@@ -1,8 +1,5 @@
-using System;
-using System.IO;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _Scripts.EditorScripts
 {
@@ -14,7 +11,7 @@ namespace _Scripts.EditorScripts
         [SerializeField] private Color color2 = Color.black;
 
         [Button]
-        Texture2D GenerateChessboardTexture()
+        private Texture2D GenerateChessboardTexture()
         {
             Texture2D texture = new Texture2D(size * squareSize, size * squareSize);
 
@@ -40,7 +37,7 @@ namespace _Scripts.EditorScripts
             return texture;
         }
 
-        void SaveTextureToFile(Texture2D texture, string filename)
+        private void SaveTextureToFile(Texture2D texture, string filename)
         {
             byte[] bytes = texture.EncodeToPNG();
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/" + filename, bytes);
