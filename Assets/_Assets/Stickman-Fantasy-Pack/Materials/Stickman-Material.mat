@@ -27,16 +27,17 @@ Material:
   m_ValidKeywords:
   - DR_CEL_EXTRA_ON
   - DR_RIM_ON
-  - _CELPRIMARYMODE_SINGLE
   - _EMISSION
   - _TEXTUREBLENDINGMODE_MULTIPLY
   m_InvalidKeywords:
+  - _CELPRIMARYMODE_NONE
   - _UNITYSHADOWMODE_NONE
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses:
   - SRPDEFAULTUNLIT
   m_LockedProperties: 
@@ -117,7 +118,7 @@ Material:
     - _CameraDistanceImpact: 0
     - _CelExtraEnabled: 1
     - _CelNumSteps: 3
-    - _CelPrimaryMode: 1
+    - _CelPrimaryMode: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
