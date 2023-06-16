@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace _Scripts
 {
-    public class FPSUnlocker : MonoBehaviour
+    public class FPSUnlocker
     {
         private void Awake()
         {

@@ -24,7 +24,7 @@ namespace _Scripts.Installers
         {
             Container
                 .Bind<FPSUnlocker>()
-                .FromNewComponentOnNewGameObject()
+                .FromNew()
                 .AsSingle()
                 .NonLazy();
         }

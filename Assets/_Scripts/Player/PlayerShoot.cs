@@ -10,7 +10,7 @@ namespace _Scripts.Player
         [SerializeField] private PoolObjectConfig _bullet;
         [SerializeField] private Transform _firePoint;
         [SerializeField] private LayerMask _targetMask;
-        
+
         private void Update()
         {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -20,10 +20,10 @@ namespace _Scripts.Player
                 {
                     var obj = PoolHub.Instance.GetObject(_bullet);
                         
-                    obj.transform.position = _firePoint.position;
+                    obj.transform.localPosition = _firePoint.position;
                     obj.transform.LookAt(hit.point, Vector3.up);
                     if(obj.TryGetComponent(out Bullet bullet))
-                        bullet.SetTarget(hit.point);
+                        bullet.SetDirection(hit.point);
                 }
             }
         }

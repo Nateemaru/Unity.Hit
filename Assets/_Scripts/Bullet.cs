@@ -10,34 +10,29 @@ namespace _Scripts
     public class Bullet : MonoBehaviour
     {
         [SerializeField] private ProjectileConfig _config;
-
-        private Vector3 _targetPos;
-
+        private Vector3 _direction;
         private bool _isHit;
 
         private void Update()
         {
-            if(!_isHit)
-            {
-                if (_targetPos != Vector3.zero)
-                    transform.position += (_targetPos - transform.position).normalized * (_config.Speed * Time.deltaTime);
+            if (_isHit) 
+                return;
 
-                //transform.rotation *= Quaternion.AngleAxis(_config.RotationSpeed, Vector3.right);
-            }
+            if(_direction != Vector3.zero)
+                transform.position += (_direction - transform.position).normalized * (_config.Speed * Time.deltaTime);
         }
 
-        public void SetTarget(Vector3 targetPosition) => _targetPos = targetPosition;
+        public void SetDirection(Vector3 direction) => _direction = direction;
 
         private void OnTriggerEnter(Collider other)
         {
             _isHit = true;
-            _targetPos = Vector3.zero;
             transform.GetComponent<Collider>().enabled = false;
             
             if(other.TryGetComponent(out BodyPart bodyPart))
             {
+                bodyPart.Punch(other.transform.position - transform.forward);
                 transform.parent = other.transform;
-                bodyPart.Punch(other.transform.position - Camera.main.transform.position);
             }
         }
     }
