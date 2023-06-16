@@ -19,8 +19,8 @@ namespace _Scripts.Gameplay.PlayerTriggers
 
         private void MovePlayer()
         {
-            EventBus.RaiseEvent<IPlayerMoveSubscriber>(item => item.OnPlayerMove());
             _isAlreadyTriggered = true;
+            EventBus.RaiseEvent<IPlayerMoveSubscriber>(item => item.OnPlayerMove());
         }
 
         private void OnTriggerEnter(Collider other)

@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 6006559712269022233}
   - component: {fileID: 8065204304742914899}
   - component: {fileID: 8679896332501368112}
+  - component: {fileID: 3891858255502441661}
   m_Layer: 8
   m_Name: CharacterController
   m_TagString: Untagged
@@ -754,6 +755,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isChangeMaterialOnDeath: 1
   _materialChanger: {fileID: 2875529366023009567}
+--- !u!136 &3891858255502441661
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059349696151081147}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.6254168
+  m_Direction: 1
+  m_Center: {x: -0, y: 1.2484503, z: 0}
 --- !u!1 &1353804686478800727
 GameObject:
   m_ObjectHideFlags: 0
