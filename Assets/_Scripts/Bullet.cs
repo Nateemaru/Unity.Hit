@@ -19,7 +19,7 @@ namespace _Scripts
                 return;
 
             if(_direction != Vector3.zero)
-                transform.position += (_direction - transform.position).normalized * (_config.Speed * Time.deltaTime);
+                transform.position += transform.forward * (_config.Speed * Time.deltaTime);
         }
 
         public void SetDirection(Vector3 direction) => _direction = direction;
