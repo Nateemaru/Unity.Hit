@@ -1908,7 +1908,7 @@ MonoBehaviour:
   _firePoint: {fileID: 500794441}
   _targetMask:
     serializedVersion: 2
-    m_Bits: 4608
+    m_Bits: 12801
 --- !u!114 &1348431277
 MonoBehaviour:
   m_ObjectHideFlags: 0
