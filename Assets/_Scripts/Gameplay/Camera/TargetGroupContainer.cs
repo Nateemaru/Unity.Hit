@@ -41,7 +41,7 @@ namespace _Scripts.Gameplay.Camera
                    _targetGroup.RemoveMember(targetTransform);
             }
             
-            if(_targetGroup.IsEmpty)
+            if(_targetGroup.m_Targets.Length <= 0)
             {
                 OnContainerIsEmpty?.Invoke();
                 EventBus.RaiseEvent<IEnemyGroupSubscriber>(item => item.OnGroupIsEmpty());

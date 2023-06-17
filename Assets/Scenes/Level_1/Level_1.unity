@@ -1840,6 +1840,17 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 1c9e38d5aa499db4089e3ee0a1137237, type: 2}
+--- !u!114 &1347971127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4134481885458426152, guid: 2c380ccdb1f5a02449cc6a8a704e0e02, type: 3}
+  m_PrefabInstance: {fileID: 7939957854818428153}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efacf79ab4214e85aeebfd07064c20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1348431272
 GameObject:
   m_ObjectHideFlags: 0
@@ -3960,13 +3971,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenPunkEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 154416519716846675, guid: 2b7655077d781c940ab5b123310268c5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 166980517183696501, guid: 2b7655077d781c940ab5b123310268c5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 1483265229625856075, guid: 2b7655077d781c940ab5b123310268c5, type: 3}
+      propertyPath: mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2362321472691147213, guid: 2b7655077d781c940ab5b123310268c5, type: 3}
       propertyPath: m_RootOrder
@@ -4010,10 +4017,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2362321472691147213, guid: 2b7655077d781c940ab5b123310268c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493885437482456039, guid: 2b7655077d781c940ab5b123310268c5, type: 3}
-      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4541,22 +4544,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 279280062}
     m_Modifications:
-    - target: {fileID: 80493944507614457, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.00000006892566
-      objectReference: {fileID: 0}
-    - target: {fileID: 1775522829273563050, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.25234443
-      objectReference: {fileID: 0}
-    - target: {fileID: 1775522829273563050, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.0000003762544
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684843725250534859, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.00000023655599
-      objectReference: {fileID: 0}
     - target: {fileID: 2870415775876543289, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -4601,33 +4588,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4983506649650075415, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.11100078
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766403010430393269, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625468971486962629, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.000000047963113
-      objectReference: {fileID: 0}
-    - target: {fileID: 8652715395248741103, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8707501033562599090, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.16578335
-      objectReference: {fileID: 0}
     - target: {fileID: 9084839468459293063, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
       propertyPath: m_Name
       value: PurplePunkEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 9084839468459293063, guid: 28ecb92f668e75a489b01a96d90b559e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4642,26 +4605,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 279280062}
     m_Modifications:
-    - target: {fileID: 4093006261347408395, guid: 2c380ccdb1f5a02449cc6a8a704e0e02, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4763280804799721120, guid: 2c380ccdb1f5a02449cc6a8a704e0e02, type: 3}
       propertyPath: m_Name
       value: BigPunkEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 4763280804799721120, guid: 2c380ccdb1f5a02449cc6a8a704e0e02, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7937774223871516182, guid: 2c380ccdb1f5a02449cc6a8a704e0e02, type: 3}
-      propertyPath: fixTargetTransforms
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8065204304742914899, guid: 2c380ccdb1f5a02449cc6a8a704e0e02, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: _behaviourPuppet
+      value: 
+      objectReference: {fileID: 1347971127}
     - target: {fileID: 8369778342398957754, guid: 2c380ccdb1f5a02449cc6a8a704e0e02, type: 3}
       propertyPath: m_RootOrder
       value: -1
