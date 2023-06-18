@@ -3,10 +3,12 @@ using _Scripts.Services.EventBusService.EventsInterfaces;
 using Sirenix.Utilities;
 using UnityEngine;
 
-namespace _Scripts
+namespace _Scripts.UI
 {
-    public class SetActiveOnSignal : MonoBehaviour, IGameWinSubscriber, IGameLoseSubscriber, 
-        IGamePauseSubscriber, IGameResumeSubscriber
+    public class SetActiveOnSignal : MonoBehaviour, IGameWinSubscriber,
+                                                    IGameLoseSubscriber,
+                                                    IGamePauseSubscriber,
+                                                    IGameRunSubscriber
     {
         [SerializeField] private bool _toggleToActive = true;
         
@@ -54,7 +56,7 @@ namespace _Scripts
             UpdateActivity(_onGamePause);
         }
 
-        public void OnGameResumed()
+        public void OnGameRan()
         {
             UpdateActivity(_onRunning);
         }

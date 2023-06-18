@@ -2,6 +2,7 @@ using System;
 using _Scripts.Services;
 using _Scripts.SO;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace _Scripts.Player
 {
@@ -13,7 +14,7 @@ namespace _Scripts.Player
 
         private void Update()
         {
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             {
                 var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                 if (Physics.Raycast(ray, out var hit, Mathf.Infinity, _targetMask))

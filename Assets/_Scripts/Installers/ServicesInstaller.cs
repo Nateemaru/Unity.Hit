@@ -1,4 +1,5 @@
 using _Scripts.Services;
+using _Scripts.Services.PauseHandlerService;
 using Zenject;
 
 namespace _Scripts.Installers
@@ -10,6 +11,7 @@ namespace _Scripts.Installers
             BindPoolHub();
             BindEnemiesHasher();
             BindCamerasHasher();
+            BindPauseHandler();
         }
 
         private void BindCamerasHasher()
@@ -34,6 +36,15 @@ namespace _Scripts.Installers
         {
             Container
                 .Bind<EnemiesHasher>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindPauseHandler()
+        {
+            Container
+                .Bind<PauseHandler>()
                 .FromNew()
                 .AsSingle()
                 .NonLazy();

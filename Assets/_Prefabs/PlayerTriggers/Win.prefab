@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 605482345791867695}
   - component: {fileID: 5971139099588991340}
   m_Layer: 11
-  m_Name: Stop
+  m_Name: Win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

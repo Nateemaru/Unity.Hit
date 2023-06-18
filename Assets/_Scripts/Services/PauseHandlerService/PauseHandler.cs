@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using System.Linq;
 using _Scripts.Services.EventBusService;
 using _Scripts.Services.EventBusService.EventsInterfaces;
 
-namespace _Scripts.Services.PauseHandler
+namespace _Scripts.Services.PauseHandlerService
 {
-    public class PauseHandler : IPauseHandler, IGameResumeSubscriber, IGamePauseSubscriber
+    public class PauseHandler : IPauseHandler, IGameRunSubscriber, IGamePauseSubscriber
     {
         private List<IPauseHandler> _pauseHandlers = new List<IPauseHandler>();
 
@@ -35,18 +34,18 @@ namespace _Scripts.Services.PauseHandler
         public void SetPause(bool isPaused)
         {
             IsPaused = isPaused;
-            foreach (var handler in _pauseHandlers.ToList())
+            foreach (var handler in _pauseHandlers)
             {
                 if (handler == null && _pauseHandlers.Contains(handler))
                 {
                     _pauseHandlers.Remove(handler);
                     continue;
                 }
-                handler?.SetPause(IsPaused);
+                handler.SetPause(IsPaused);
             }
         }
 
-        public void OnGameResumed()
+        public void OnGameRan()
         {
             SetPause(false);
         }

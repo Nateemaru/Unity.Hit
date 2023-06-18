@@ -9,6 +9,16 @@ namespace _Scripts.Installers
         {
             BindFPSUnlocker();
             BindCoroutineStarter();
+            BindSceneLoader();
+        }
+
+        private void BindSceneLoader()
+        {
+            Container
+                .Bind<SceneLoader>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindCoroutineStarter()

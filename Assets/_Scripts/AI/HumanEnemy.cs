@@ -32,8 +32,7 @@ namespace _Scripts.AI
             
             _fsm.AddAnyTransition(ragdollState, () => _puppetMaster.pinWeight < _maxPinWeight);
             
-            _fsm.AddAnyTransition(idleState, () => _target == null 
-                                                   && _fsm.CurrentState.IsAnimationEnded);
+            _fsm.AddAnyTransition(idleState, () => _isActive && _fsm.CurrentState.IsAnimationEnded);
             
             _fsm.AddAnyTransition(moveState, () => _target != null
                                                    && _fsm.CurrentState.IsAnimationEnded

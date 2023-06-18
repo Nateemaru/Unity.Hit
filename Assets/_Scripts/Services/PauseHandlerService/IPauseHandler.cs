@@ -1,4 +1,4 @@
-namespace _Scripts.Services.PauseHandler
+namespace _Scripts.Services.PauseHandlerService
 {
     public interface IPauseHandler
     {
