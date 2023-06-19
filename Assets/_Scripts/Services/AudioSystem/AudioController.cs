@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 
 namespace _Scripts.Services.AudioSystem
 {
-    public class AudioController : IGameResumeSubscriber, IGamePauseSubscriber
+    public class AudioController : IGameRunSubscriber, IGamePauseSubscriber
     {
         private AudioMixer _mixer;
         private const float _SNAPSHOT_TRANSITION_TIME = 0;
@@ -58,7 +58,7 @@ namespace _Scripts.Services.AudioSystem
             return null;
         }
 
-        public void OnGameResumed()
+        public void OnGameRan()
         {
             SwitchSnapshot(GlobalConstants.RUNNING_SNAPSHOT);
         }
