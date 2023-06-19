@@ -3,7 +3,7 @@ using _Scripts.Player;
 using Animancer;
 using UnityEngine;
 
-namespace _Scripts.Gameplay.FSM.States
+namespace _Scripts.AI.FSM.States
 {
     public class EnemyMoveState : StateBase
     {

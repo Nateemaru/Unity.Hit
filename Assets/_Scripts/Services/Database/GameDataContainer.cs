@@ -10,7 +10,6 @@ namespace _Scripts.Services.Database
         public GameDataContainer(IStorageService storageService)
         {
             _storageService = storageService;
-
             InitDataDictionary();
         }
 

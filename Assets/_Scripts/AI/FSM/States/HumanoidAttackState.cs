@@ -4,7 +4,7 @@ using _Scripts.Services.EventBusService.EventsInterfaces;
 using Animancer;
 using UnityEngine;
 
-namespace _Scripts.Gameplay.FSM.States
+namespace _Scripts.AI.FSM.States
 {
     public class HumanoidAttackState : StateBase
     {

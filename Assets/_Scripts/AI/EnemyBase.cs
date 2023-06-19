@@ -1,18 +1,15 @@
-using System;
+using _Scripts.AI.FSM;
 using _Scripts.Gameplay;
-using _Scripts.Gameplay.FSM;
 using _Scripts.Player;
 using _Scripts.Services;
+using _Scripts.Services.EventBusService;
 using _Scripts.Services.EventBusService.EventsInterfaces;
 using _Scripts.Services.PauseHandlerService;
 using _Scripts.SO;
 using Animancer;
-using RootMotion.Dynamics;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
-using EventBus = _Scripts.Services.EventBusService.EventBus;
 
 namespace _Scripts.AI
 {
@@ -21,7 +18,7 @@ namespace _Scripts.AI
         [TabGroup("Params")][SerializeField] protected UnitConfig _config;
         [TabGroup("Components")][SerializeField] protected AnimancerComponent _animancer;
 
-        protected FSM _fsm;
+        protected AIStateMachine _fsm;
         protected HealthComponent _health;
         protected ITarget _target;
         protected bool _isActive;

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Scripts.Gameplay.FSM
+namespace _Scripts.AI.FSM
 {
-   public class FSM
+   public class AIStateMachine
    {
       private class Transition
       {
@@ -34,7 +34,7 @@ namespace _Scripts.Gameplay.FSM
 
       private float _timeOfNextPossibleDecision;
 
-      public FSM(float decisionDelay = 0)
+      public AIStateMachine(float decisionDelay = 0)
       {
          _decisionDelay = decisionDelay;
       }

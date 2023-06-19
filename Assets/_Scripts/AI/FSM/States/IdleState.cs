@@ -1,6 +1,6 @@
 using Animancer;
 
-namespace _Scripts.Gameplay.FSM.States
+namespace _Scripts.AI.FSM.States
 {
     public class IdleState : StateBase
     {

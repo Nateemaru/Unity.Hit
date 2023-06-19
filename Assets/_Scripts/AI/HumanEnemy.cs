@@ -1,7 +1,6 @@
-using System;
+using _Scripts.AI.FSM;
+using _Scripts.AI.FSM.States;
 using _Scripts.CodeSugar;
-using _Scripts.Gameplay.FSM;
-using _Scripts.Gameplay.FSM.States;
 using Animancer;
 using RootMotion.Dynamics;
 using Sirenix.OdinInspector;
@@ -27,7 +26,7 @@ namespace _Scripts.AI
             var ragdollState = new RagdollState(_animancer, _puppetMaster);
             var attackState = new HumanoidAttackState(transform, _animancer, _attackClip, _target);
             
-            _fsm = new FSM();
+            _fsm = new AIStateMachine();
             _fsm.SetState(idleState);
             
             _fsm.AddAnyTransition(ragdollState, () => _puppetMaster.pinWeight < _maxPinWeight);

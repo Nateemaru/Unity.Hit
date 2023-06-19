@@ -2,7 +2,7 @@ using Animancer;
 using RootMotion.Dynamics;
 using UnityEngine;
 
-namespace _Scripts.Gameplay.FSM.States
+namespace _Scripts.AI.FSM.States
 {
     public class RagdollState : StateBase
     {

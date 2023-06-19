@@ -4,7 +4,7 @@ namespace _Scripts
 {
     public class FPSUnlocker
     {
-        private void Awake()
+        public FPSUnlocker()
         {
             Application.targetFrameRate = 60;
         }

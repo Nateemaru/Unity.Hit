@@ -1,4 +1,4 @@
-namespace _Scripts.Gameplay.FSM
+namespace _Scripts.AI.FSM
 {
     public abstract class StateBase
     {
