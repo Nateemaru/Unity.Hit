@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sounds:
   - _clip: {fileID: 8300000, guid: 0d96961ce23c19d4e963d438b9b80b73, type: 3}
-    _name: hitToEnemy
+    _name: HitToEnemy
     _playOnAwake: 0
     _isLoop: 0
     _isRandomPitch: 1

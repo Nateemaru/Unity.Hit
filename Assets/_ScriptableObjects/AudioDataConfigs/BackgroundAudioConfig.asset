@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65f6e0aeb4d1254da702f3ca35c55a0, type: 3}
   m_Name: BackgroundAudioConfig
   m_EditorClassIdentifier: 
-  _sounds: []
+  _sounds:
+  - _clip: {fileID: 8300000, guid: 0869bcc8afadcbd4182169d7dc3e6484, type: 3}
+    _name: Background1
+    _playOnAwake: 1
+    _isLoop: 1
+    _isRandomPitch: 0
   _type: 2

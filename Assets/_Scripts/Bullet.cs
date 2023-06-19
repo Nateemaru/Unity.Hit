@@ -1,5 +1,6 @@
 using _Scripts.AI.BodyParts;
 using _Scripts.Services;
+using _Scripts.Services.AudioSystem;
 using _Scripts.Services.PauseHandlerService;
 using _Scripts.SO;
 using Sirenix.OdinInspector;
@@ -51,6 +52,7 @@ namespace _Scripts
                 bodyPart.Punch(other.transform.position - transform.forward, () =>
                 {
                     PoolHub.Instance.GetObject(_hitVfxEffect).transform.position = transform.position;
+                    AudioPlayer.Instance.Play("HitToEnemy");
                 });
                 transform.parent = other.transform;
             }

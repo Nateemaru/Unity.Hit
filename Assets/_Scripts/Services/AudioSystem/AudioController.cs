@@ -9,7 +9,7 @@ namespace _Scripts.Services.AudioSystem
     public class AudioController : IGameRunSubscriber, IGamePauseSubscriber
     {
         private AudioMixer _mixer;
-        private const float _SNAPSHOT_TRANSITION_TIME = 0;
+        private const float _SNAPSHOT_TRANSITION_TIME = 0.1f;
         private IDataContainer _dataContainer;
 
         public AudioController(IDataContainer dataContainer)
