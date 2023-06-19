@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: UIAudioConfig
   m_EditorClassIdentifier: 
   _sounds: []
-  _type: 0
+  _type: 1
