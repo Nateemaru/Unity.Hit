@@ -6,8 +6,6 @@ namespace _Scripts.Installers
 {
     public class GameplayInstaller : MonoInstaller
     {
-        [SerializeField] private PlayerController _target;
-        
         public override void InstallBindings()
         {
             BindTarget();
@@ -18,7 +16,7 @@ namespace _Scripts.Installers
             Container
                 .Bind<ITarget>()
                 .To<PlayerController>()
-                .FromInstance(_target)
+                .FromComponentInHierarchy()
                 .AsSingle()
                 .NonLazy();
         }
