@@ -1,4 +1,6 @@
 using _Scripts.Services;
+using _Scripts.Services.CoroutineRunnerService;
+using _Scripts.Services.SceneLoadService;
 using Zenject;
 
 namespace _Scripts.Installers
@@ -9,13 +11,14 @@ namespace _Scripts.Installers
         {
             BindFPSUnlocker();
             BindCoroutineStarter();
-            BindSceneLoader();
+            BindISceneLoadService();
         }
 
-        private void BindSceneLoader()
+        private void BindISceneLoadService()
         {
             Container
-                .Bind<SceneLoader>()
+                .Bind<ISceneLoadService>()
+                .To<SceneLoader>()
                 .FromNew()
                 .AsSingle()
                 .NonLazy();
@@ -24,7 +27,8 @@ namespace _Scripts.Installers
         private void BindCoroutineStarter()
         {
             Container
-            .Bind<CoroutineStarter>()
+            .Bind<ICoroutineRunner>()
+            .To<CoroutineRunner>()
             .FromNewComponentOnNewGameObject()
             .AsSingle()
             .NonLazy();

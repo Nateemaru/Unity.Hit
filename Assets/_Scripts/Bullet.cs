@@ -48,8 +48,10 @@ namespace _Scripts
             
             if(other.TryGetComponent(out BodyPart bodyPart))
             {
-                PoolHub.Instance.GetObject(_hitVfxEffect).transform.position = transform.position;
-                bodyPart.Punch(other.transform.position - transform.forward);
+                bodyPart.Punch(other.transform.position - transform.forward, () =>
+                {
+                    PoolHub.Instance.GetObject(_hitVfxEffect).transform.position = transform.position;
+                });
                 transform.parent = other.transform;
             }
         }

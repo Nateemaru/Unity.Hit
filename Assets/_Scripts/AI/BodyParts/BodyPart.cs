@@ -9,7 +9,11 @@ namespace _Scripts.AI.BodyParts
         public Action OnBodyPartPunched;
         protected HealthComponent _targetHealth;
 
-        public abstract void Punch(Vector3 forceDirection);
+        public virtual void Punch(Vector3 forceDirection, Action callback = null)
+        {
+            if(_targetHealth != null && !_targetHealth.IsDead)
+                callback?.Invoke();
+        }
 
         public void SetTargetHealth(HealthComponent healthComponent)
         {
