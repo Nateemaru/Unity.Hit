@@ -1,7 +1,7 @@
-using _Scripts.Services;
 using _Scripts.Services.AudioSystem;
 using _Scripts.Services.CoroutineRunnerService;
 using _Scripts.Services.Database;
+using _Scripts.Services.PauseHandlerService;
 using _Scripts.Services.SceneLoadService;
 using Zenject;
 
@@ -13,10 +13,20 @@ namespace _Scripts.Installers
         {
             BindFPSUnlocker();
             BindCoroutineStarter();
-            BindISceneLoadService();
+            BindSceneLoadService();
             BindStorage();
-            BindDataContainer();
+            BindDataReader();
             BindAudioController();
+            BindPauseHandler();
+        }
+
+        private void BindPauseHandler()
+        {
+            Container
+                .Bind<PauseHandler>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindAudioController()
@@ -31,22 +41,23 @@ namespace _Scripts.Installers
         {
             Container
             .Bind<IStorageService>()
-            .To<JsonStorage>()
-            .AsSingle()
-            .NonLazy();
-        }
-
-        private void BindDataContainer()
-        {
-            Container
-            .Bind<IDataContainer>()
-            .To<GameDataContainer>()
+            .To<JsonToFileStorage>()
             .FromNew()
             .AsSingle()
             .NonLazy();
         }
 
-        private void BindISceneLoadService()
+        private void BindDataReader()
+        {
+            Container
+            .Bind<IDataReader>()
+            .To<DataReader>()
+            .FromNew()
+            .AsSingle()
+            .NonLazy();
+        }
+
+        private void BindSceneLoadService()
         {
             Container
                 .Bind<ISceneLoadService>()

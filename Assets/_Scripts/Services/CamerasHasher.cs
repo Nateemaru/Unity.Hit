@@ -1,11 +1,11 @@
-using _Scripts.Services.EventBusService;
-using _Scripts.Services.EventBusService.EventsInterfaces;
+using System;
 using Cinemachine;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace _Scripts.Services
 {
-    public class CamerasHasher
+    public class CamerasHasher : MonoBehaviour
     {
         private CinemachineBrain _brain;
         private CinemachineVirtualCamera[] _vcams;
@@ -13,7 +13,7 @@ namespace _Scripts.Services
 
         public CinemachineVirtualCamera ActiveCamera => _activeCamera;
 
-        public CamerasHasher()
+        private void Start()
         {
             _brain = Object.FindObjectOfType<CinemachineBrain>();
             _vcams = Object.FindObjectsOfType<CinemachineVirtualCamera>();

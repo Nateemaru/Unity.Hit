@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace _Scripts.Services.Database
 {
-    public class JsonStorage : IStorageService
+    public class JsonToFileStorage : IStorageService
     {
-        public JsonStorage()
+        public JsonToFileStorage()
         {
             
         }

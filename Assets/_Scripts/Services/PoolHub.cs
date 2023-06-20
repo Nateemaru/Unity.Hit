@@ -11,12 +11,12 @@ namespace _Scripts.Services
         private static PoolHub _instance;
         private ObjectPool[] _setupPools;
         private Dictionary<PoolObjectConfig, ObjectPool> _pools;
-        private PoolFactory _factory;
+        private ObjectPool.Factory _factory;
 
         public static PoolHub Instance => _instance;
 
         [Inject]
-        private void Construct(PoolFactory factory)
+        private void Construct(ObjectPool.Factory factory)
         {
             _factory = factory;
         }
@@ -44,9 +44,10 @@ namespace _Scripts.Services
 
             ObjectPool newPool;
 
-            newPool = _factory.CreatePool(gameObject);
+            newPool = _factory.Create();
+            newPool.transform.parent = transform;
             
-            var container = parent != null ? parent : transform;
+            var container = parent != null ? parent : newPool.transform;
             newPool.InitPoolAfterStart(poolType, container, true, 5);
 
             _pools.Add(poolType, newPool);

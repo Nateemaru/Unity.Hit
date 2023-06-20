@@ -10,13 +10,13 @@ namespace _Scripts.Installers
     {
         public override void InstallBindings()
         {
-            BindPoolFactory();
+            BindObjectPoolFactory();
             BindGameObjectFactory();
         }
 
-        private void BindPoolFactory()
+        private void BindObjectPoolFactory()
         {
-            Container.BindFactory<ObjectPool, PoolFactory>().FromFactory<PoolFactory>();
+            Container.BindFactory<ObjectPool, ObjectPool.Factory>().FromNewComponentOnNewGameObject();
         }
 
         private void BindGameObjectFactory()

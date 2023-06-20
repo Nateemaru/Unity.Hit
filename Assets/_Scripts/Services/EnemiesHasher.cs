@@ -14,10 +14,6 @@ namespace _Scripts.Services
         public delegate void EnemiesChanged(int amount);
         
         public EnemiesChanged OnEnemiesAmountChanged;
-        
-        public EnemiesHasher()
-        {
-        }
 
         public void Register(IEnemy enemy)
         {

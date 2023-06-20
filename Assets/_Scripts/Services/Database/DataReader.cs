@@ -2,12 +2,12 @@ using System.Collections.Generic;
 
 namespace _Scripts.Services.Database
 {
-    public class GameDataContainer : IDataContainer
+    public class DataReader : IDataReader
     {
         private IStorageService _storageService;
         private Dictionary<string, ITrackableValue> _dataDictionary = new Dictionary<string,  ITrackableValue>();
 
-        public GameDataContainer(IStorageService storageService)
+        public DataReader(IStorageService storageService)
         {
             _storageService = storageService;
             InitDataDictionary();
