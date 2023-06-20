@@ -1,4 +1,5 @@
 using _Scripts.Services;
+using _Scripts.Services.GameStateMachine;
 using _Scripts.Services.PauseHandlerService;
 using Zenject;
 
@@ -12,6 +13,7 @@ namespace _Scripts.Installers
             BindEnemiesHasher();
             BindCamerasHasher();
             BindPauseHandler();
+            BindGameStateMachine();
         }
 
         private void BindCamerasHasher()
@@ -45,6 +47,16 @@ namespace _Scripts.Installers
         {
             Container
                 .Bind<PauseHandler>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindGameStateMachine()
+        {
+            Container
+                .Bind<IGameStateMachine>()
+                .To<GameStateMachine>()
                 .FromNew()
                 .AsSingle()
                 .NonLazy();

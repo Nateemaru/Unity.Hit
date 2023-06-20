@@ -1,4 +1,4 @@
-namespace _Scripts.Services.GameStateMachine
+namespace _Scripts.Services.GameStateMachine.GameStates
 {
     public interface IGameState
     {

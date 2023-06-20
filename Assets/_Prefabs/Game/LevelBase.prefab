@@ -195,7 +195,7 @@ Transform:
   - {fileID: 5679221842383976383}
   - {fileID: 7392604596790572182}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4460399690960319057
 GameObject:
@@ -495,9 +495,9 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -2, y: 0, z: 0}
-      - {x: -1, y: 0.5, z: 0}
-      - {x: 1, y: -0.5, z: 0}
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0, z: 0}
       - {x: 2, y: 0, z: 0}
       isClosed: 0
       space: 0

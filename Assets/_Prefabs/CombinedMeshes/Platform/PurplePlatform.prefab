@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7827962474136216159}
   - component: {fileID: 2776438493783780848}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: PurplePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
