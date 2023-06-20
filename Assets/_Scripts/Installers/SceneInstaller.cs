@@ -1,3 +1,4 @@
+using _Scripts.AI;
 using _Scripts.Gameplay;
 using _Scripts.Player;
 using _Scripts.Services;
@@ -30,7 +31,6 @@ namespace _Scripts.Installers
         {
             Container
                 .Bind<LevelBootstrapper>()
-                .FromNew()
                 .AsSingle()
                 .NonLazy();
         }
@@ -41,8 +41,7 @@ namespace _Scripts.Installers
                 .Bind<ITarget>()
                 .To<PlayerController>()
                 .FromComponentInHierarchy()
-                .AsSingle()
-                .Lazy();
+                .WhenInjectedInto<EnemyBase>();
         }
         private void BindLevelContainerConfig()
         {
@@ -56,7 +55,7 @@ namespace _Scripts.Installers
         private void BindLevelSpawner()
         {
             Container
-                .Bind<LevelSpawner>()
+                .BindInterfacesAndSelfTo<LevelSpawner>()
                 .FromNew()
                 .AsSingle()
                 .NonLazy();
@@ -65,8 +64,7 @@ namespace _Scripts.Installers
         private void BindCamerasHasher()
         {
             Container
-                .Bind<CamerasHasher>()
-                .FromNewComponentOnNewGameObject()
+                .BindInterfacesAndSelfTo<CamerasHasher>()
                 .AsSingle()
                 .NonLazy();
         }
@@ -83,8 +81,7 @@ namespace _Scripts.Installers
         private void BindEnemiesHasher()
         {
             Container
-                .Bind<EnemiesHasher>()
-                .FromNew()
+                .BindInterfacesAndSelfTo<EnemiesHasher>()
                 .AsSingle()
                 .NonLazy();
         }

@@ -4,12 +4,15 @@ using _Scripts.Services.EventBusService;
 using _Scripts.Services.EventBusService.EventsInterfaces;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
+using UnityEngine;
+using Zenject;
 
 namespace _Scripts.Services
 {
     public class EnemiesHasher
     {
-        [ReadOnly] public List<IEnemy> Enemies = new List<IEnemy>();
+        private List<IEnemy> _enemies = new List<IEnemy>();
+        public List<IEnemy> Enemies => _enemies;
 
         public delegate void EnemiesChanged(int amount);
         
@@ -17,22 +20,22 @@ namespace _Scripts.Services
 
         public void Register(IEnemy enemy)
         {
-            if(!Enemies.Contains(enemy))
+            if(!_enemies.Contains(enemy))
             {
-                Enemies.Add(enemy);
-                OnEnemiesAmountChanged?.Invoke(Enemies.Count);
+                _enemies.Add(enemy);
+                OnEnemiesAmountChanged?.Invoke(_enemies.Count);
             }
         }
 
         public void Unregister(IEnemy enemy)
         {
-            if(Enemies.Contains(enemy))
+            if(_enemies.Contains(enemy))
             {
-                Enemies.Remove(enemy);
-                OnEnemiesAmountChanged?.Invoke(Enemies.Count);
+                _enemies.Remove(enemy);
+                OnEnemiesAmountChanged?.Invoke(_enemies.Count);
             }
             
-            if(Enemies.IsNullOrEmpty())
+            if(_enemies.IsNullOrEmpty())
                 EventBus.RaiseEvent<INoEnemiesSubscriber>(item => item.OnNoEnemies());
         }
     }

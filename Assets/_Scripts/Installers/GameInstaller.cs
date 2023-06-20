@@ -7,7 +7,7 @@ using Zenject;
 
 namespace _Scripts.Installers
 {
-    public class BootstrapInstaller : MonoInstaller
+    public class GameInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {
@@ -80,8 +80,7 @@ namespace _Scripts.Installers
         private void BindFPSUnlocker()
         {
             Container
-                .Bind<FPSUnlocker>()
-                .FromNew()
+                .BindInterfacesAndSelfTo<FPSUnlocker>()
                 .AsSingle()
                 .NonLazy();
         }
