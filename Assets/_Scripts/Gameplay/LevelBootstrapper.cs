@@ -1,7 +1,5 @@
 using _Scripts.Services.GameStateMachine;
 using _Scripts.Services.GameStateMachine.GameStates;
-using UnityEngine;
-using Zenject;
 
 namespace _Scripts.Gameplay
 {

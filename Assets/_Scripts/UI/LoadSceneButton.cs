@@ -1,21 +1,22 @@
-using _Scripts.Services.SceneLoadService;
+using _Scripts.Services.GameStateMachine;
+using _Scripts.Services.GameStateMachine.GameStates;
 using Zenject;
 
 namespace _Scripts.UI
 {
     public class LoadSceneButton : ButtonBase
     {
-        private ISceneLoadService _sceneLoadService;
+        private IGameStateMachine _gameStateMachine;
 
         [Inject]
-        private void Construct(ISceneLoadService sceneLoadService)
+        private void Construct(IGameStateMachine gameStateMachine)
         {
-            _sceneLoadService = sceneLoadService;
+            _gameStateMachine = gameStateMachine;
         }
         
         protected override void OnClick()
         {
-            _sceneLoadService.Load("GameScene");
+            _gameStateMachine.ChangeState<SceneLoadState>();
         }
     }
 }

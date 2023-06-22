@@ -16,7 +16,8 @@ namespace _Scripts.Services.GameStateMachine
             GameRunState.Factory gameRunStateFactory,
             GamePauseState.Factory gamePauseStateFactory,
             GameLoseState.Factory gameLoseStateFactory,
-            GameWinState.Factory gameWinStateFactory)
+            GameWinState.Factory gameWinStateFactory, 
+            SceneLoadState.Factory sceneLoadStateFactory)
         {
             _registeredStates = new Dictionary<Type, IGameState>();
             
@@ -25,6 +26,7 @@ namespace _Scripts.Services.GameStateMachine
             RegisterState(gamePauseStateFactory.Create(this));
             RegisterState(gameLoseStateFactory.Create(this));
             RegisterState(gameWinStateFactory.Create(this));
+            RegisterState(sceneLoadStateFactory.Create(this));
         }
 
         private void RegisterState<TState>(TState state) where TState : IGameState =>

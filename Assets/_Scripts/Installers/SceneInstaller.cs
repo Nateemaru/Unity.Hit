@@ -93,6 +93,7 @@ namespace _Scripts.Installers
             Container.BindFactory<IGameStateMachine, GamePauseState, GamePauseState.Factory>();
             Container.BindFactory<IGameStateMachine, GameLoseState, GameLoseState.Factory>();
             Container.BindFactory<IGameStateMachine, GameWinState, GameWinState.Factory>();
+            Container.BindFactory<IGameStateMachine, SceneLoadState, SceneLoadState.Factory>();
             
             Container
                 .Bind<IGameStateMachine>()
