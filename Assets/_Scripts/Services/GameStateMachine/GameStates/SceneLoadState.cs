@@ -18,6 +18,7 @@ namespace _Scripts.Services.GameStateMachine.GameStates
         public void Enter()
         {
             // Fade in screen using custom "Fader" or asset "Easy Transition" async;
+            //_sceneLoadService.Load("GameScene", _gameStateMachine.ChangeState<GameStartState>());
             _sceneLoadService.Load("GameScene");
         }
 

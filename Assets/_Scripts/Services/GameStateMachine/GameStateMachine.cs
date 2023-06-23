@@ -9,6 +9,8 @@ namespace _Scripts.Services.GameStateMachine
         private Dictionary<Type, IGameState> _registeredStates;
         private IGameState _currentGameState;
 
+        public IGameStateMachine.OnGameStateChanged OnStateChanged { get; set; }
+        
         public IGameState CurrentGameState => _currentGameState;
 
         public GameStateMachine(
@@ -40,6 +42,7 @@ namespace _Scripts.Services.GameStateMachine
             _currentGameState = state;
             
             _currentGameState.Enter();
+            OnStateChanged?.Invoke(_currentGameState);
         }
     
         private TState GetState<TState>() where TState : class, IGameState => 

@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 88641542}
   - component: {fileID: 88641541}
   - component: {fileID: 88641540}
+  - component: {fileID: 88641543}
   m_Layer: 5
   m_Name: WinCanvas
   m_TagString: Untagged
@@ -294,6 +295,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 20
   m_TargetDisplay: 0
+--- !u!114 &88641543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88641538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc7c37efa1649d583a5850606920450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &258617947
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +487,7 @@ GameObject:
   - component: {fileID: 503169472}
   - component: {fileID: 503169471}
   - component: {fileID: 503169470}
+  - component: {fileID: 503169473}
   m_Layer: 5
   m_Name: SettingsCanvas
   m_TagString: Untagged
@@ -565,6 +579,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!114 &503169473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503169468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bc1964ef2541b28fd9c01f878828a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _closeButton: {fileID: 1786147701688959667}
+  _openButton: {fileID: 5613213896340219906}
+  _volumeSlider: {fileID: 1233727755699756040}
 --- !u!114 &590508455 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7225899659751892156, guid: 6cd89d5397286e64a85e858ea9166df8, type: 3}
@@ -853,8 +882,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284810229}
-  - component: {fileID: 1284810231}
-  - component: {fileID: 1284810230}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -882,44 +909,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284810230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284810228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd5a81e748d790a439403287e28c3c20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _toggleToActive: 0
-  _onRunning:
-  - {fileID: 503169468}
-  _onWin: []
-  _onLose: []
-  _onGamePause: []
---- !u!114 &1284810231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284810228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd5a81e748d790a439403287e28c3c20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _toggleToActive: 1
-  _onRunning: []
-  _onWin:
-  - {fileID: 88641538}
-  _onLose:
-  - {fileID: 1718303509}
-  _onGamePause:
-  - {fileID: 503169468}
 --- !u!1 &1332089982
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,6 +970,7 @@ GameObject:
   - component: {fileID: 1489229554}
   - component: {fileID: 1489229555}
   - component: {fileID: 1489229558}
+  - component: {fileID: 1489229559}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -1019,6 +1009,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 1489229555}
   - {fileID: 1489229558}
+  - {fileID: 1489229559}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -1061,6 +1052,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105712a7fef14479b3539787b9917851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1489229559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489229552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ff33efaab84d0ea6b6fb6178f85de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1517688432 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5489065996001618096, guid: 6cd89d5397286e64a85e858ea9166df8, type: 3}
@@ -1078,6 +1081,7 @@ GameObject:
   - component: {fileID: 1718303512}
   - component: {fileID: 1718303511}
   - component: {fileID: 1718303510}
+  - component: {fileID: 1718303514}
   m_Layer: 5
   m_Name: LoseCanvas
   m_TagString: Untagged
@@ -1169,6 +1173,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1718303514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718303509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8491ab31721f488faf60fff251c2ee8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1958999510 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3441604222460405783, guid: 6cd89d5397286e64a85e858ea9166df8, type: 3}
@@ -1183,11 +1199,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1958999510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80b8e423b5074b97868afc93f7b987aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 27982fb932d8414180f6d898fc206f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _fillImage: {fileID: 590508455}
-  _duration: 0.5
+  _animationDuration: 0.5
 --- !u!1 &2022501655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,7 +2715,6 @@ GameObject:
   - component: {fileID: 1786147701688959629}
   - component: {fileID: 1786147701688959628}
   - component: {fileID: 1786147701688959667}
-  - component: {fileID: 1786147701688959668}
   m_Layer: 5
   m_Name: CrossButton
   m_TagString: Untagged
@@ -2771,18 +2786,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1786147701688959668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1786147701688959665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f956a0d06c1ca24f899153049a16e5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1786147702163961808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4840,9 +4843,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3917631862543371833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c68760e979a74e4e98ced24730ae1f5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a363dd39b79404ba34cde6f835f0e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loadSceneButton: {fileID: 3918788741329592506}
 --- !u!222 &6073283406836355632
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5076,7 +5080,6 @@ GameObject:
   - component: {fileID: 5613213896340219906}
   - component: {fileID: 7123345334009583710}
   - component: {fileID: 7123345334009583711}
-  - component: {fileID: 7123345334009583712}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -5211,18 +5214,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7123345334009583712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7123345334009583709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64591d4cf9d0d0d488c79f8d1a52f96f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7231205759424551833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5957,6 +5948,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 204402675403353207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c68760e979a74e4e98ced24730ae1f5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a363dd39b79404ba34cde6f835f0e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loadSceneButton: {fileID: 2021371447735800972}

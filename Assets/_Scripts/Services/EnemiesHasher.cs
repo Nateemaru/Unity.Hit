@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using _Scripts.AI;
 using _Scripts.Services.EventBusService;
@@ -12,18 +13,19 @@ namespace _Scripts.Services
     public class EnemiesHasher
     {
         private List<IEnemy> _enemies = new List<IEnemy>();
+        private float _totalEnemies;
         public List<IEnemy> Enemies => _enemies;
-
-        public delegate void EnemiesChanged(int amount);
+        public float TotalEnemies;
         
-        public EnemiesChanged OnEnemiesAmountChanged;
+        public Action OnEnemiesAmountChanged;
 
         public void Register(IEnemy enemy)
         {
             if(!_enemies.Contains(enemy))
             {
                 _enemies.Add(enemy);
-                OnEnemiesAmountChanged?.Invoke(_enemies.Count);
+                OnEnemiesAmountChanged?.Invoke();
+                TotalEnemies++;
             }
         }
 
@@ -32,11 +34,8 @@ namespace _Scripts.Services
             if(_enemies.Contains(enemy))
             {
                 _enemies.Remove(enemy);
-                OnEnemiesAmountChanged?.Invoke(_enemies.Count);
+                OnEnemiesAmountChanged?.Invoke();
             }
-            
-            if(_enemies.IsNullOrEmpty())
-                EventBus.RaiseEvent<INoEnemiesSubscriber>(item => item.OnNoEnemies());
         }
     }
 }
