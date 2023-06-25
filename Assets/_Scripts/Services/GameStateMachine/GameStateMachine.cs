@@ -36,13 +36,15 @@ namespace _Scripts.Services.GameStateMachine
 
         public void ChangeState<TState>() where TState : class, IGameState
         {
-            _currentGameState?.Exit();
-      
             TState state = GetState<TState>();
-            _currentGameState = state;
-            
-            _currentGameState.Enter();
-            OnStateChanged?.Invoke(_currentGameState);
+
+            if (state != _currentGameState)
+            {
+                _currentGameState?.Exit();
+                _currentGameState = state;
+                _currentGameState.Enter();
+                OnStateChanged?.Invoke(_currentGameState);
+            }
         }
     
         private TState GetState<TState>() where TState : class, IGameState => 

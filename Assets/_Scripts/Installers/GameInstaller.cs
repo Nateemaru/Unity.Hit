@@ -1,14 +1,19 @@
+using System;
 using _Scripts.Services.AudioSystem;
 using _Scripts.Services.CoroutineRunnerService;
 using _Scripts.Services.Database;
 using _Scripts.Services.PauseHandlerService;
 using _Scripts.Services.SceneLoadService;
+using _Scripts.UI;
+using UnityEngine;
 using Zenject;
 
 namespace _Scripts.Installers
 {
     public class GameInstaller : MonoInstaller
     {
+        [SerializeField] private GameObject _fader;
+
         public override void InstallBindings()
         {
             BindFPSUnlocker();
@@ -18,6 +23,16 @@ namespace _Scripts.Installers
             BindDataReader();
             BindAudioController();
             BindPauseHandler();
+            BindFadeScreen();
+        }
+
+        private void BindFadeScreen()
+        {
+            Container
+                .BindInterfacesAndSelfTo<IFadeScreen>()
+                .FromComponentsInNewPrefab(_fader)
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindPauseHandler()
