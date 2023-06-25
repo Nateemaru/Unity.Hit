@@ -1,6 +1,6 @@
-namespace _Scripts.Services.GameStateMachine.GameStates
+namespace _Scripts.Services.StateMachines
 {
-    public interface IGameState
+    public interface IState
     {
 
         public virtual void Enter()

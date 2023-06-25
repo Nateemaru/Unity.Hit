@@ -3,17 +3,17 @@ using _Scripts.Services.Database;
 using _Scripts.Services.PauseHandlerService;
 using Zenject;
 
-namespace _Scripts.Services.GameStateMachine.GameStates
+namespace _Scripts.Services.StateMachines.LevelStateMachine.LevelStates
 {
-    public class GamePauseState : IGameState
+    public class LevelPauseState : IState
     {
-        private readonly IGameStateMachine _gameStateMachine;
+        private readonly ILevelStateMachine _levelStateMachine;
         private readonly PauseHandler _pauseHandler;
         private readonly AudioController _audioController;
 
-        public GamePauseState(IGameStateMachine gameStateMachine, PauseHandler pauseHandler, AudioController audioController)
+        public LevelPauseState(ILevelStateMachine levelStateMachine, PauseHandler pauseHandler, AudioController audioController)
         {
-            _gameStateMachine = gameStateMachine;
+            _levelStateMachine = levelStateMachine;
             _pauseHandler = pauseHandler;
             _audioController = audioController;
         }
@@ -30,7 +30,7 @@ namespace _Scripts.Services.GameStateMachine.GameStates
             _audioController.SwitchSnapshot(GlobalConstants.RUNNING_SNAPSHOT);
         }
 
-        public class Factory : PlaceholderFactory<IGameStateMachine, GamePauseState>
+        public class Factory : PlaceholderFactory<IStateMachine, LevelPauseState>
         {
         }
     }

@@ -1,20 +1,20 @@
-using _Scripts.CodeSugar;
 using _Scripts.Services.AudioSystem;
-using _Scripts.Services.GameStateMachine;
-using _Scripts.Services.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines;
+using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines.LevelStateMachine;
+using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
 using _Scripts.UI.UIInfrastructure.BaseComponents;
-using UnityEngine;
 
 namespace _Scripts.UI.UIInfrastructure
 {
     public class SettingsScreenController : BaseViewController
     {
-        private readonly IGameStateMachine _gameStateMachine;
+        private readonly ILevelStateMachine _levelStateMachine;
         private readonly AudioController _audioController;
 
-        public SettingsScreenController(IGameStateMachine gameStateMachine, AudioController audioController)
+        public SettingsScreenController(ILevelStateMachine levelStateMachine, AudioController audioController)
         {
-            _gameStateMachine = gameStateMachine;
+            _levelStateMachine = levelStateMachine;
             _audioController = audioController;
         }
 
@@ -25,12 +25,12 @@ namespace _Scripts.UI.UIInfrastructure
         
         public void OnCloseButtonClicked()
         {
-            _gameStateMachine.ChangeState<GameRunState>();
+            _levelStateMachine.ChangeState<LevelRunState>();
         }
         
         public void OnOpenButtonClicked()
         {
-            _gameStateMachine.ChangeState<GamePauseState>();
+            _levelStateMachine.ChangeState<LevelPauseState>();
         }
     }
 }

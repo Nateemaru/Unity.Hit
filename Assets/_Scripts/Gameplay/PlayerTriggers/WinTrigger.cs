@@ -1,8 +1,8 @@
 using _Scripts.Player;
-using _Scripts.Services.EventBusService;
-using _Scripts.Services.EventBusService.EventsInterfaces;
-using _Scripts.Services.GameStateMachine;
-using _Scripts.Services.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines;
+using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines.LevelStateMachine;
+using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
 using UnityEngine;
 using Zenject;
 
@@ -10,18 +10,18 @@ namespace _Scripts.Gameplay.PlayerTriggers
 {
     public class WinTrigger : MonoBehaviour
     {
-        private IGameStateMachine _gameStateMachine;
+        private ILevelStateMachine _levelStateMachine;
 
         [Inject]
-        private void Construct(IGameStateMachine gameStateMachine)
+        private void Construct(ILevelStateMachine levelStateMachine)
         {
-            _gameStateMachine = gameStateMachine;
+            _levelStateMachine = levelStateMachine;
         }
         
         private void OnTriggerEnter(Collider other)
         {
             if(other.TryGetComponent(out MovementBase movementBase))
-                _gameStateMachine.ChangeState<GameWinState>();
+                _levelStateMachine.ChangeState<LevelWinState>();
         }
     }
 }

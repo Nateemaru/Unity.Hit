@@ -1,28 +1,28 @@
 using System;
-using _Scripts.CodeSugar;
-using _Scripts.Services.GameStateMachine;
-using _Scripts.Services.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines;
+using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines.LevelStateMachine;
+using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
 using _Scripts.UI.UIInfrastructure.BaseComponents;
-using UnityEngine;
 
 namespace _Scripts.UI.UIInfrastructure
 {
     public class WinScreenController : BaseViewController
     {
-        private readonly IGameStateMachine _gameStateMachine;
+        private readonly ILevelStateMachine _levelStateMachine;
 
         public Action ShowCommand;
 
-        public WinScreenController(IGameStateMachine gameStateMachine)
+        public WinScreenController(ILevelStateMachine levelStateMachine)
         {
-            _gameStateMachine = gameStateMachine;
+            _levelStateMachine = levelStateMachine;
 
-            _gameStateMachine.OnStateChanged += GetGameState;
+            _levelStateMachine.OnStateChanged += GetGameState;
         }
 
-        private void GetGameState(IGameState gameState)
+        private void GetGameState(IState gameState)
         {
-            if (gameState.GetType() == typeof(GameWinState))
+            if (gameState.GetType() == typeof(LevelWinState))
                 ShowCommand?.Invoke();
         }
     }

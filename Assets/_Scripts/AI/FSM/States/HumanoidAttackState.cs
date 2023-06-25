@@ -26,13 +26,5 @@ namespace _Scripts.AI.FSM.States
             AnimancerState state = _animancer.Play(_actionClip);
             _isAnimationEnded = true;
         }
-
-        public override void Update()
-        {
-        }
-
-        public override void Exit()
-        {
-        }
     }
 }

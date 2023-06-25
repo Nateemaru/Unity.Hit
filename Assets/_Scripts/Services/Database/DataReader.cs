@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using UnityEngine;
+using Zenject;
 
 namespace _Scripts.Services.Database
 {
-    public class DataReader : IDataReader
+    public class DataReader : IDataReader, IInitializable
     {
         private IStorageService _storageService;
         private Dictionary<string, ITrackableValue> _dataDictionary = new Dictionary<string,  ITrackableValue>();
@@ -10,6 +12,10 @@ namespace _Scripts.Services.Database
         public DataReader(IStorageService storageService)
         {
             _storageService = storageService;
+        }
+
+        public void Initialize()
+        {
             InitDataDictionary();
         }
 

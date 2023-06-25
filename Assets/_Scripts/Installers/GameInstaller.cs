@@ -1,9 +1,14 @@
 using System;
+using _Scripts.Gameplay;
 using _Scripts.Services.AudioSystem;
 using _Scripts.Services.CoroutineRunnerService;
 using _Scripts.Services.Database;
 using _Scripts.Services.PauseHandlerService;
 using _Scripts.Services.SceneLoadService;
+using _Scripts.Services.StateMachines;
+using _Scripts.Services.StateMachines.GameStateMachine;
+using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
 using _Scripts.UI;
 using UnityEngine;
 using Zenject;
@@ -24,6 +29,25 @@ namespace _Scripts.Installers
             BindAudioController();
             BindPauseHandler();
             BindFadeScreen();
+            BindGameStateMachine();
+            BindFactories();
+        }
+
+        private void BindFactories()
+        {
+            Container.BindFactory<IStateMachine, GameStartState, GameStartState.Factory>();
+            Container.BindFactory<IStateMachine, GameLoadState, GameLoadState.Factory>();
+            Container.BindFactory<IStateMachine, GameRunState, GameRunState.Factory>();
+        }
+
+        private void BindGameStateMachine()
+        {
+            Container
+                .Bind<IGameStateMachine>()
+                .To<GameStateMachine>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindFadeScreen()
@@ -65,11 +89,10 @@ namespace _Scripts.Installers
         private void BindDataReader()
         {
             Container
-            .Bind<IDataReader>()
-            .To<DataReader>()
-            .FromNew()
-            .AsSingle()
-            .NonLazy();
+                .BindInterfacesAndSelfTo<DataReader>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindSceneLoadService()

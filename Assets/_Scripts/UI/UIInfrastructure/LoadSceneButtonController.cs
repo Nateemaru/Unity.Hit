@@ -1,5 +1,5 @@
-using _Scripts.Services.GameStateMachine;
-using _Scripts.Services.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines.GameStateMachine;
+using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
 using _Scripts.UI.UIInfrastructure.BaseComponents;
 
 namespace _Scripts.UI.UIInfrastructure
@@ -14,7 +14,7 @@ namespace _Scripts.UI.UIInfrastructure
         }
         public void OnButtonClicked()
         {
-            _gameStateMachine.ChangeState<SceneLoadState>();
+            _gameStateMachine.ChangeState<GameLoadState>();
         }
     }
 }

@@ -1,8 +1,8 @@
 using Zenject;
 
-namespace _Scripts.Services.GameStateMachine.GameStates
+namespace _Scripts.Services.StateMachines.GameStateMachine.GameStates
 {
-    public class GameRunState : IGameState
+    public class GameRunState : IState
     {
         private readonly IGameStateMachine _gameStateMachine;
 
@@ -11,7 +11,7 @@ namespace _Scripts.Services.GameStateMachine.GameStates
             _gameStateMachine = gameStateMachine;
         }
         
-        public class Factory : PlaceholderFactory<IGameStateMachine, GameRunState>
+        public class Factory : PlaceholderFactory<IStateMachine, GameRunState>
         {
         }
     }

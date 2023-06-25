@@ -1,21 +1,23 @@
-using _Scripts.Services.GameStateMachine;
-using _Scripts.Services.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines;
+using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines.LevelStateMachine;
+using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
 using Zenject;
 
 namespace _Scripts.Gameplay
 {
     public class LevelBootstrapper : IInitializable
     {
-        private IGameStateMachine _gameStateMachine;
+        private ILevelStateMachine _levelStateMachine;
 
-        public LevelBootstrapper(IGameStateMachine gameStateMachine)
+        public LevelBootstrapper(ILevelStateMachine levelStateMachine)
         {
-            _gameStateMachine = gameStateMachine;
+            _levelStateMachine = levelStateMachine;
         }
 
         public void Initialize()
         {
-            _gameStateMachine.ChangeState<GameStartState>();
+            _levelStateMachine.ChangeState<LevelInitState>();
         }
     }
 }

@@ -1,26 +1,28 @@
 using System;
-using _Scripts.Services.GameStateMachine;
-using _Scripts.Services.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines;
+using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
+using _Scripts.Services.StateMachines.LevelStateMachine;
+using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
 using _Scripts.UI.UIInfrastructure.BaseComponents;
 
 namespace _Scripts.UI.UIInfrastructure
 {
     public class LoseScreenController : BaseViewController
     {
-        private readonly IGameStateMachine _gameStateMachine;
+        private readonly ILevelStateMachine _levelStateMachine;
 
         public Action ShowCommand;
 
-        public LoseScreenController(IGameStateMachine gameStateMachine)
+        public LoseScreenController(ILevelStateMachine levelStateMachine)
         {
-            _gameStateMachine = gameStateMachine;
+            _levelStateMachine = levelStateMachine;
 
-            _gameStateMachine.OnStateChanged += GetGameState;
+            _levelStateMachine.OnStateChanged += GetGameState;
         }
 
-        private void GetGameState(IGameState gameState)
+        private void GetGameState(IState gameState)
         {
-            if (gameState.GetType() == typeof(GameLoseState))
+            if (gameState.GetType() == typeof(LevelLoseState))
                 ShowCommand?.Invoke();
         }
         
