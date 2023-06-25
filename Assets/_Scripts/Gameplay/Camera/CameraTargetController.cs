@@ -12,11 +12,11 @@ namespace _Scripts.Gameplay.Camera
     {
         [SerializeField] private CinemachineTargetGroup[] _targetGroup;
 
-        private CamerasHasher _camerasHasher;
+        private CameraHasher _camerasHasher;
         private int _groupCount = 1;
 
         [Inject]
-        private void Construct(CamerasHasher camerasHasher)
+        private void Construct(CameraHasher camerasHasher)
         {
             _camerasHasher = camerasHasher;
         }

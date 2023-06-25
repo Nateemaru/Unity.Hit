@@ -92,5 +92,10 @@ namespace _Scripts.Services
             element = null;
             return false;
         }
+
+        public class Factory : PlaceholderFactory<ObjectPool>
+        {
+            
+        }
     }
 }

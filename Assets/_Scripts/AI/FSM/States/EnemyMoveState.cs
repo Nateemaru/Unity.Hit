@@ -43,9 +43,5 @@ namespace _Scripts.AI.FSM.States
                 _origin.LookAtOnlyYSmooth(_target.GetTarget(), _rotSmooth);
             }
         }
-
-        public override void Exit()
-        {
-        }
     }
 }

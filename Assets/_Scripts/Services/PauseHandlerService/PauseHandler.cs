@@ -4,16 +4,11 @@ using _Scripts.Services.EventBusService.EventsInterfaces;
 
 namespace _Scripts.Services.PauseHandlerService
 {
-    public class PauseHandler : IPauseHandler, IGameRunSubscriber, IGamePauseSubscriber
+    public class PauseHandler : IPauseHandler
     {
         private List<IPauseHandler> _pauseHandlers = new List<IPauseHandler>();
 
         public bool IsPaused { get; private set; }
-
-        public PauseHandler()
-        {
-            EventBus.Subscribe(this);
-        }
 
         public void Register(IPauseHandler handler)
         {
@@ -43,16 +38,6 @@ namespace _Scripts.Services.PauseHandlerService
                 }
                 handler.SetPause(IsPaused);
             }
-        }
-
-        public void OnGameRan()
-        {
-            SetPause(false);
-        }
-
-        public void OnGamePaused()
-        {
-            SetPause(true);
         }
     }
 }

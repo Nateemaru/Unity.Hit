@@ -13,7 +13,7 @@ using Zenject;
 
 namespace _Scripts.AI
 {
-    public abstract class EnemyBase : GameBehaviour, IEnemy, IGameLoseSubscriber
+    public abstract class EnemyBase : GameBehaviour, IEnemy
     {
         [TabGroup("Params")][SerializeField] protected UnitConfig _config;
         [TabGroup("Components")][SerializeField] protected AnimancerComponent _animancer;
@@ -45,7 +45,6 @@ namespace _Scripts.AI
                 EventBus.RaiseEvent<IEnemyDiedSubscriber>(item => item.OnEnemyDied(transform.parent));
             };
             _enemiesHasher.Register(this);
-            EventBus.Subscribe(this);
             
             Init();
         }
@@ -53,13 +52,11 @@ namespace _Scripts.AI
         private void OnEnable()
         {
             _enemiesHasher.Register(this);
-            EventBus.Subscribe(this);
         }
 
         private void OnDisable()
         {
             _enemiesHasher.Unregister(this);
-            EventBus.Unsubscribe(this);
         }
 
         protected virtual void Update()
@@ -81,11 +78,6 @@ namespace _Scripts.AI
                 else
                     _animancer.Playable.UnpauseGraph();
             }
-        }
-
-        public void OnGameLost()
-        {
-            _isActive = true;
         }
     }
 }

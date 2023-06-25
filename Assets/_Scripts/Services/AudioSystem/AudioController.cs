@@ -6,29 +6,16 @@ using UnityEngine.Audio;
 
 namespace _Scripts.Services.AudioSystem
 {
-    public class AudioController : IGameRunSubscriber, IGamePauseSubscriber
+    public class AudioController
     {
         private AudioMixer _mixer;
         private const float _SNAPSHOT_TRANSITION_TIME = 0.1f;
-        private IDataContainer _dataContainer;
+        private IDataReader _dataReader;
 
-        public AudioController(IDataContainer dataContainer)
+        public AudioController(IDataReader dataReader)
         {
-            _dataContainer = dataContainer;
+            _dataReader = dataReader;
             _mixer = Resources.Load<AudioMixer>("AudioMixer");
-            SwitchSnapshot(GlobalConstants.RUNNING_SNAPSHOT);
-            
-            EventBus.Subscribe(this);
-            
-            ChangeVolume(-80);
-        }
-
-        public float GetVolume()
-        {
-            if (_mixer.GetFloat("Volume", out var volume))
-                return volume;
-
-            return 0;
         }
 
         public void SwitchSnapshot(string snapshotName)
@@ -39,7 +26,7 @@ namespace _Scripts.Services.AudioSystem
         public void ChangeVolume(float volumeLevel)
         {
             _mixer.SetFloat("Volume", volumeLevel);
-            _dataContainer.SaveDataChanges();
+            _dataReader.SaveDataChanges();
         }
         
         public AudioMixerGroup FindSubgroup(string subgroupName)
@@ -56,16 +43,6 @@ namespace _Scripts.Services.AudioSystem
                 }
             }
             return null;
-        }
-
-        public void OnGameRan()
-        {
-            SwitchSnapshot(GlobalConstants.RUNNING_SNAPSHOT);
-        }
-
-        public void OnGamePaused()
-        {
-            SwitchSnapshot(GlobalConstants.PAUSE_SNAPSHOT);
         }
     }
 }
