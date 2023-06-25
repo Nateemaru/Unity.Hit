@@ -4,7 +4,7 @@ using Zenject;
 
 namespace _Scripts.Services
 {
-    public class CamerasHasher : IInitializable
+    public class CameraHasher
     {
         private CinemachineBrain _brain;
         private CinemachineVirtualCamera[] _vcams;
@@ -12,10 +12,16 @@ namespace _Scripts.Services
 
         public CinemachineVirtualCamera ActiveCamera => _activeCamera;
         
-        public void Initialize()
+        public void Cache()
         {
             _brain = Object.FindObjectOfType<CinemachineBrain>();
             _vcams = Object.FindObjectsOfType<CinemachineVirtualCamera>();
+        }
+
+        public void ClearCache()
+        {
+            _brain = null;
+            _vcams = null;
         }
     }
 }

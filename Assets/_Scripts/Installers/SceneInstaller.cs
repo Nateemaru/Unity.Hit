@@ -20,7 +20,7 @@ namespace _Scripts.Installers
             BindGameStateMachine();
             BindPoolHub();
             BindEnemiesHasher();
-            BindCamerasHasher();
+            BindCameraHasher();
             BindLevelSpawner();
             BindLevelContainerConfig();
             BindTarget();
@@ -30,7 +30,7 @@ namespace _Scripts.Installers
         private void BindLevelBootstrapper()
         {
             Container
-                .Bind<LevelBootstrapper>()
+                .BindInterfacesAndSelfTo<LevelBootstrapper>()
                 .AsSingle()
                 .NonLazy();
         }
@@ -61,10 +61,11 @@ namespace _Scripts.Installers
                 .NonLazy();
         }
 
-        private void BindCamerasHasher()
+        private void BindCameraHasher()
         {
             Container
-                .BindInterfacesAndSelfTo<CamerasHasher>()
+                .Bind<CameraHasher>()
+                .FromNew()
                 .AsSingle()
                 .NonLazy();
         }

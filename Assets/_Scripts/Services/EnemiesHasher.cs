@@ -1,12 +1,6 @@
 using System;
 using System.Collections.Generic;
 using _Scripts.AI;
-using _Scripts.Services.EventBusService;
-using _Scripts.Services.EventBusService.EventsInterfaces;
-using Sirenix.OdinInspector;
-using Sirenix.Utilities;
-using UnityEngine;
-using Zenject;
 
 namespace _Scripts.Services
 {
@@ -15,7 +9,7 @@ namespace _Scripts.Services
         private List<IEnemy> _enemies = new List<IEnemy>();
         private float _totalEnemies;
         public List<IEnemy> Enemies => _enemies;
-        public float TotalEnemies;
+        public float TotalEnemies => _totalEnemies;
         
         public Action OnEnemiesAmountChanged;
 
@@ -25,7 +19,7 @@ namespace _Scripts.Services
             {
                 _enemies.Add(enemy);
                 OnEnemiesAmountChanged?.Invoke();
-                TotalEnemies++;
+                _totalEnemies++;
             }
         }
 
@@ -37,5 +31,7 @@ namespace _Scripts.Services
                 OnEnemiesAmountChanged?.Invoke();
             }
         }
+
+        public void Clear() => _enemies.Clear();
     }
 }

@@ -22,11 +22,6 @@ namespace _Scripts.Services.GameStateMachine.GameStates
             _sceneLoadService.Load("GameScene");
         }
 
-        public void Exit()
-        {
-            // Fade out screen using custom "Fader" or asset "Easy Transition";
-        }
-
         public class Factory : PlaceholderFactory<IGameStateMachine, SceneLoadState>
         {
         }

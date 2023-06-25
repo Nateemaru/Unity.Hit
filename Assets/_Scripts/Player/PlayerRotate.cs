@@ -7,10 +7,10 @@ namespace _Scripts.Player
 {
     public class PlayerRotate : MonoBehaviour
     {
-        private CamerasHasher _camerasHasher;
+        private CameraHasher _camerasHasher;
 
         [Inject]
-        private void Construct(CamerasHasher camerasHasher)
+        private void Construct(CameraHasher camerasHasher)
         {
             _camerasHasher = camerasHasher;
         }
