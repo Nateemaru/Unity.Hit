@@ -1,9 +1,10 @@
 using _Scripts.UI.UIInfrastructure.BaseComponents;
+using _Scripts.UI.UIInfrastructure.ViewControllers;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace _Scripts.UI.UIInfrastructure
+namespace _Scripts.UI.UIInfrastructure.Views
 {
     public class LoadSceneButtonView : BaseView<LoadSceneButtonController>
     {

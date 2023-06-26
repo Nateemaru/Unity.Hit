@@ -1,8 +1,9 @@
 using _Scripts.CodeSugar;
 using _Scripts.UI.UIInfrastructure.BaseComponents;
+using _Scripts.UI.UIInfrastructure.ViewControllers;
 using Zenject;
 
-namespace _Scripts.UI.UIInfrastructure
+namespace _Scripts.UI.UIInfrastructure.Views
 {
     public class LoseScreenView : BaseView<LoseScreenController>
     {

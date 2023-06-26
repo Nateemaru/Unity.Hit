@@ -1,9 +1,8 @@
 using System;
 using _Scripts.Services;
 using _Scripts.UI.UIInfrastructure.BaseComponents;
-using Zenject;
 
-namespace _Scripts.UI.UIInfrastructure
+namespace _Scripts.UI.UIInfrastructure.ViewControllers
 {
     public class LevelProgressController : BaseViewController
     {

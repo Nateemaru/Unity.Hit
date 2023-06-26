@@ -10,6 +10,7 @@ using _Scripts.Services.StateMachines.GameStateMachine;
 using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
 using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
 using _Scripts.UI;
+using _Scripts.UI.UIInfrastructure.ViewControllers;
 using UnityEngine;
 using Zenject;
 
@@ -31,6 +32,16 @@ namespace _Scripts.Installers
             BindFadeScreen();
             BindGameStateMachine();
             BindFactories();
+            BindProgressBarController();
+        }
+
+        private void BindProgressBarController()
+        {
+            Container
+                .Bind<ProgressBarController>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindFactories()

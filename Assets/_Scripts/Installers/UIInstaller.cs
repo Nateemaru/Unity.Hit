@@ -1,4 +1,6 @@
+using _Scripts.UI;
 using _Scripts.UI.UIInfrastructure;
+using _Scripts.UI.UIInfrastructure.ViewControllers;
 using Zenject;
 
 namespace _Scripts.Installers
