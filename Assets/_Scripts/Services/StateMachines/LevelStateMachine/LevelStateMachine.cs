@@ -14,23 +14,12 @@ namespace _Scripts.Services.StateMachines.LevelStateMachine
         
         public IState CurrentLevelState => _currentLevelState;
 
-        public LevelStateMachine(
-            LevelInitState.Factory levelInitStateFactory,
-            LevelRunState.Factory levelRunStateFactory,
-            LevelPauseState.Factory levelPauseStateFactory,
-            LevelLoseState.Factory levelLoseStateFactory,
-            LevelWinState.Factory levelWinStateFactory)
+        public LevelStateMachine()
         {
             _registeredStates = new Dictionary<Type, IState>();
-            
-            RegisterState(levelInitStateFactory.Create(this));
-            RegisterState(levelRunStateFactory.Create(this));
-            RegisterState(levelPauseStateFactory.Create(this));
-            RegisterState(levelLoseStateFactory.Create(this));
-            RegisterState(levelWinStateFactory.Create(this));
         }
 
-        private void RegisterState<TState>(TState state) where TState : IState =>
+        public void RegisterState<TState>(TState state) where TState : IState =>
             _registeredStates.Add(typeof(TState), state);
 
         public void ChangeState<TState>() where TState : class, IState

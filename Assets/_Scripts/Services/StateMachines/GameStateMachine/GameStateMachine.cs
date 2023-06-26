@@ -13,19 +13,12 @@ namespace _Scripts.Services.StateMachines.GameStateMachine
         
         public IState CurrentGameState => _currentGameState;
 
-        public GameStateMachine(
-            GameStartState.Factory gameStartStateFactory,
-            GameLoadState.Factory sceneLoadStateFactory,
-            GameRunState.Factory gameRunStateFactory)
+        public GameStateMachine()
         {
             _registeredStates = new Dictionary<Type, IState>();
-            
-            RegisterState(gameStartStateFactory.Create(this));
-            RegisterState(sceneLoadStateFactory.Create(this));
-            RegisterState(gameRunStateFactory.Create(this));
         }
 
-        private void RegisterState<TState>(TState state) where TState : IState =>
+        public void RegisterState<TState>(TState state) where TState : IState =>
             _registeredStates.Add(typeof(TState), state);
 
         public void ChangeState<TState>() where TState : class, IState
