@@ -27,7 +27,6 @@ namespace _Scripts.Installers
             BindLevelSpawner();
             BindLevelContainerConfig();
             BindTarget();
-            BindLevelBootstrapper();
             BindFactories();
         }
 
@@ -41,14 +40,6 @@ namespace _Scripts.Installers
             
             Container.BindFactory<ObjectPool, ObjectPool.Factory>().FromNewComponentOnNewGameObject();
             Container.BindFactory<GameObject, GameObjectFactory>().FromFactory<GameObjectFactory>();
-        }
-
-        private void BindLevelBootstrapper()
-        {
-            Container
-                .BindInterfacesAndSelfTo<LevelBootstrapper>()
-                .AsSingle()
-                .NonLazy();
         }
 
         private void BindTarget()

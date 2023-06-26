@@ -14,6 +14,10 @@ namespace _Scripts.Services.StateMachines.LevelStateMachine.LevelStates
             _dataReader = dataReader;
         }
 
+        public void Enter()
+        {
+        }
+
         public class Factory : PlaceholderFactory<IStateMachine, LevelWinState>
         {
         }

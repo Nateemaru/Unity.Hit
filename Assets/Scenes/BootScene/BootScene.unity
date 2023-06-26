@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.30566037, g: 0.73615515, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -456,7 +456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7c30a7fb8e497498395dc4aeeaef99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadingDelay: 1
 --- !u!1001 &1022666572
 PrefabInstance:
   m_ObjectHideFlags: 0

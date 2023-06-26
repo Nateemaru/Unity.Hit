@@ -9,7 +9,7 @@ namespace _Scripts.Gameplay
     {
         private LevelsContainerConfig _levelsContainer;
         private readonly GameObjectFactory _factory;
-        private GameObject _currentLevelPrefab;
+        private LevelsContainerConfig.Level _currentLevel;
 
         public LevelSpawner(LevelsContainerConfig levelsContainer, GameObjectFactory factory)
         {
@@ -19,20 +19,20 @@ namespace _Scripts.Gameplay
 
         public void CreateLevel()
         {
-            GameObject newLevelPrefab;
+            LevelsContainerConfig.Level newLevel;
             
-            for (int i = 0; i < _levelsContainer.LevelPrefabs.Length; i++)
+            for (int i = 0; i < _levelsContainer.Levels.Length; i++)
             {
-                newLevelPrefab = _levelsContainer.LevelPrefabs[Random.Range(0, _levelsContainer.LevelPrefabs.Length - 1)];
+                newLevel = _levelsContainer.Levels[Random.Range(0, _levelsContainer.Levels.Length - 1)];
 
-                if (newLevelPrefab != _currentLevelPrefab)
+                if (newLevel != _currentLevel)
                 {
-                    _currentLevelPrefab = newLevelPrefab;
+                    _currentLevel = newLevel;
                     break;
                 }
             }
 
-            _factory.CreateGameObject(_currentLevelPrefab);
+            _factory.CreateGameObject(_currentLevel.Prefab);
         }
     }
 }

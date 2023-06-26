@@ -1,6 +1,7 @@
 using System.Collections;
 using _Scripts.Services.StateMachines.GameStateMachine;
 using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
+using _Scripts.UI;
 using _Scripts.UI.UIInfrastructure.ViewControllers;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -14,30 +15,25 @@ namespace _Scripts.Gameplay
         private GameStartState.Factory _gameStartStateFactory;
         private GameLoadState.Factory _gameLoadStateFactory;
         private GameRunState.Factory _gameRunStateFactory;
-        private ProgressBarController _progressBarController;
 
         [Inject]
         private void Construct(
             IGameStateMachine gameStateMachine,
             GameStartState.Factory gameStartStateFactory,
             GameLoadState.Factory gameLoadStateFactory,
-            GameRunState.Factory gameRunStateFactory,
-            ProgressBarController progressBarController)
+            GameRunState.Factory gameRunStateFactory)
         {
             _gameStateMachine = gameStateMachine;
             _gameStartStateFactory = gameStartStateFactory;
             _gameLoadStateFactory = gameLoadStateFactory;
             _gameRunStateFactory = gameRunStateFactory;
-
-            _progressBarController = progressBarController;
         }
 
-        private IEnumerator Start()
+        private void Start()
         {
             _gameStateMachine.RegisterState(_gameStartStateFactory.Create(_gameStateMachine));
             _gameStateMachine.RegisterState(_gameLoadStateFactory.Create(_gameStateMachine));
             _gameStateMachine.RegisterState(_gameRunStateFactory.Create(_gameStateMachine));
-            yield return new WaitForSeconds(1f);
             
             _gameStateMachine.ChangeState<GameStartState>();
         }

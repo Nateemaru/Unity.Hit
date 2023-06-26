@@ -2,20 +2,22 @@ using _Scripts.Services.StateMachines;
 using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
 using _Scripts.Services.StateMachines.LevelStateMachine;
 using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
+using UnityEngine;
 using Zenject;
 
 namespace _Scripts.Gameplay
 {
-    public class LevelBootstrapper : IInitializable
+    public class LevelBootstrapper : MonoBehaviour
     {
         private ILevelStateMachine _levelStateMachine;
-        private readonly LevelInitState.Factory _levelInitStateFactory;
-        private readonly LevelRunState.Factory _levelRunStateFactory;
-        private readonly LevelPauseState.Factory _levelPauseStateFactory;
-        private readonly LevelLoseState.Factory _levelLoseStateFactory;
-        private readonly LevelWinState.Factory _levelWinStateFactory;
+        private LevelInitState.Factory _levelInitStateFactory;
+        private LevelRunState.Factory _levelRunStateFactory;
+        private LevelPauseState.Factory _levelPauseStateFactory;
+        private LevelLoseState.Factory _levelLoseStateFactory;
+        private LevelWinState.Factory _levelWinStateFactory;
 
-        public LevelBootstrapper(
+        [Inject]
+        private void Construct(
             ILevelStateMachine levelStateMachine,
             LevelInitState.Factory levelInitStateFactory,
             LevelRunState.Factory levelRunStateFactory,
@@ -31,9 +33,8 @@ namespace _Scripts.Gameplay
             _levelWinStateFactory = levelWinStateFactory;
         }
 
-        public void Initialize()
+        public void Start()
         {
-            
             _levelStateMachine.RegisterState(_levelInitStateFactory.Create(_levelStateMachine));
             _levelStateMachine.RegisterState(_levelRunStateFactory.Create(_levelStateMachine));
             _levelStateMachine.RegisterState(_levelPauseStateFactory.Create(_levelStateMachine));

@@ -13,7 +13,7 @@ namespace _Scripts.UI
         [SerializeField] private AnimationClip _fadeOutClip;
         
         private AnimancerComponent _animancer;
-        private bool _isFading = false;
+        private bool _isFading;
 
         private void OnEnable()
         {

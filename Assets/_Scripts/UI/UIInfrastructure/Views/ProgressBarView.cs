@@ -22,11 +22,12 @@ namespace _Scripts.UI.UIInfrastructure.Views
         protected override void OnBound()
         {
             _viewController.OnProgressBarUpdated += UpdateProgressBar;
+            _viewController.OnFilled = () => _slider.value >= _slider.maxValue;
         }
 
         private void UpdateProgressBar(float value)
         {
-            _slider.value = value;
+            _slider.value += Mathf.Lerp(_slider.minValue, _slider.maxValue, value);
             _text.text = $"{Mathf.RoundToInt(_slider.value * 100)}%";
         }
     }
