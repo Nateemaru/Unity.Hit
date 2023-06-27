@@ -9,6 +9,7 @@ using _Scripts.Services.StateMachines;
 using _Scripts.Services.StateMachines.GameStateMachine;
 using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
 using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
+using _Scripts.SO;
 using _Scripts.UI;
 using _Scripts.UI.UIInfrastructure.ViewControllers;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace _Scripts.Installers
     public class GameInstaller : MonoInstaller
     {
         [SerializeField] private GameObject _fader;
+        [SerializeField] private LevelsContainerConfig _levelsContainer;
 
         public override void InstallBindings()
         {
@@ -33,6 +35,16 @@ namespace _Scripts.Installers
             BindGameStateMachine();
             BindFactories();
             BindProgressBarController();
+            BindLevelContainerConfig();
+        }
+        
+        private void BindLevelContainerConfig()
+        {
+            Container
+                .Bind<LevelsContainerConfig>()
+                .FromScriptableObject(_levelsContainer)
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindProgressBarController()

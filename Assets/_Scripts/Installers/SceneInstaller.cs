@@ -16,8 +16,6 @@ namespace _Scripts.Installers
 {
     public class SceneInstaller : MonoInstaller
     {
-        [SerializeField] private LevelsContainerConfig _levelsContainer;
-        
         public override void InstallBindings()
         {
             BindGameStateMachine();
@@ -25,7 +23,6 @@ namespace _Scripts.Installers
             BindEnemiesHasher();
             BindCameraHasher();
             BindLevelSpawner();
-            BindLevelContainerConfig();
             BindTarget();
             BindFactories();
         }
@@ -49,14 +46,6 @@ namespace _Scripts.Installers
                 .To<PlayerController>()
                 .FromComponentInHierarchy()
                 .WhenInjectedInto<EnemyBase>();
-        }
-        private void BindLevelContainerConfig()
-        {
-            Container
-                .Bind<LevelsContainerConfig>()
-                .FromScriptableObject(_levelsContainer)
-                .AsSingle()
-                .NonLazy();
         }
 
         private void BindLevelSpawner()

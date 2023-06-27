@@ -26,7 +26,6 @@ namespace _Scripts.Services.AudioSystem
         public void ChangeVolume(float volumeLevel)
         {
             _mixer.SetFloat("Volume", volumeLevel);
-            _dataReader.SaveDataChanges();
         }
         
         public AudioMixerGroup FindSubgroup(string subgroupName)

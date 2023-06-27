@@ -1,37 +1,27 @@
+using System.Linq;
 using _Scripts.Factories;
+using _Scripts.Services.Database;
 using _Scripts.SO;
-using UnityEngine;
-using Zenject;
 
 namespace _Scripts.Gameplay
 {
     public class LevelSpawner
     {
-        private LevelsContainerConfig _levelsContainer;
         private readonly GameObjectFactory _factory;
-        private LevelsContainerConfig.Level _currentLevel;
+        private readonly IDataReader _dataReader;
+        private Level _currentLevel;
 
-        public LevelSpawner(LevelsContainerConfig levelsContainer, GameObjectFactory factory)
+        public LevelSpawner(GameObjectFactory factory, IDataReader dataReader)
         {
-            _levelsContainer = levelsContainer;
             _factory = factory;
+            _dataReader = dataReader;
         }
 
         public void CreateLevel()
         {
-            LevelsContainerConfig.Level newLevel;
+            _currentLevel = _dataReader
+                .GetData<Level>(GlobalConstants.LAST_LEVEL);
             
-            for (int i = 0; i < _levelsContainer.Levels.Length; i++)
-            {
-                newLevel = _levelsContainer.Levels[Random.Range(0, _levelsContainer.Levels.Length - 1)];
-
-                if (newLevel != _currentLevel)
-                {
-                    _currentLevel = newLevel;
-                    break;
-                }
-            }
-
             _factory.CreateGameObject(_currentLevel.Prefab);
         }
     }

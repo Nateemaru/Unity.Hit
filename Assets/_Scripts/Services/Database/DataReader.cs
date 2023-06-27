@@ -7,7 +7,6 @@ namespace _Scripts.Services.Database
     public class DataReader : IDataReader, IInitializable
     {
         private IStorageService _storageService;
-        private Dictionary<string, ITrackableValue> _dataDictionary = new Dictionary<string,  ITrackableValue>();
 
         public DataReader(IStorageService storageService)
         {
@@ -16,25 +15,29 @@ namespace _Scripts.Services.Database
 
         public void Initialize()
         {
-            InitDataDictionary();
         }
 
-        private void InitDataDictionary()
+        public void SaveData<TData>(string key, TData data)
         {
+            _storageService.Save(key, data);
         }
-
-        public void SaveDataChanges()
+        
+        public void SaveArrayData<TData>(string key, TData[] data)
         {
-            foreach (var data in _dataDictionary)
-                _storageService.Save(data.Key, data.Value);
+            _storageService.SaveArray(key, data);
         }
+        
 
-        public TrackableValue<TData> GetData<TData>(string key)
+        public TData GetData<TData>(string key) where TData : class
         {
-            if (_dataDictionary.TryGetValue(key, out var data))
-                return data as TrackableValue<TData>;
-
-            return null;
+            var data = _storageService.Load<TData>(key);
+            return data;
+        }
+        
+        public TData[] GetArrayData<TData>(string key) where TData : class
+        {
+            var data = _storageService.LoadArray<TData>(key);
+            return data;
         }
     }
 }

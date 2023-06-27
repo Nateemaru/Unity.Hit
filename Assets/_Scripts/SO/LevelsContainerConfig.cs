@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace _Scripts.SO
@@ -9,15 +8,5 @@ namespace _Scripts.SO
         [SerializeField] private Level[] _levels;
 
         public Level[] Levels => _levels;
-
-        [Serializable]
-        public class Level
-        {
-            [SerializeField] private int _id;
-            [SerializeField] private GameObject _prefab;
-
-            public int ID => _id;
-            public GameObject Prefab => _prefab;
-        }
     }
 }

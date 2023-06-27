@@ -1,9 +1,15 @@
+
+
 using System.Collections;
-using _Scripts.Gameplay;
+using System.Collections.Generic;
+using System.Linq;
 using _Scripts.Services.CoroutineRunnerService;
-using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
+using _Scripts.Services.Database;
+using _Scripts.SO;
 using _Scripts.UI;
 using _Scripts.UI.UIInfrastructure.ViewControllers;
+using Sirenix.Utilities;
+using UnityEngine;
 using Zenject;
 
 namespace _Scripts.Services.StateMachines.GameStateMachine.GameStates
@@ -12,23 +18,35 @@ namespace _Scripts.Services.StateMachines.GameStateMachine.GameStates
     {
         private readonly IGameStateMachine _gameStateMachine;
         private ProgressBarController _progressBarController;
-        private IFadeScreen _fadeScreen;
         private readonly ICoroutineRunner _coroutineRunner;
+        private readonly LevelsContainerConfig _levelsContainerConfig;
+        private readonly IDataReader _dataReader;
 
         public GameStartState(
             IGameStateMachine gameStateMachine,
-            ProgressBarController progressBarController, 
-            IFadeScreen fadeScreen,
-            ICoroutineRunner coroutineRunner)
+            ProgressBarController progressBarController,
+            ICoroutineRunner coroutineRunner,
+            LevelsContainerConfig levelsContainerConfig,
+            IDataReader dataReader)
         {
             _gameStateMachine = gameStateMachine;
             _progressBarController = progressBarController;
-            _fadeScreen = fadeScreen;
             _coroutineRunner = coroutineRunner;
+            _levelsContainerConfig = levelsContainerConfig;
+            _dataReader = dataReader;
         }
 
         public void Enter()
         {
+            var levels = _dataReader.GetArrayData<Level>(GlobalConstants.LEVELS);
+
+            if (levels.IsNullOrEmpty())
+            {
+                _dataReader.SaveArrayData(GlobalConstants.LEVELS, _levelsContainerConfig.Levels);
+                var lastLevel = _levelsContainerConfig.Levels.First(item => !item.IsCompleted);
+                _dataReader.SaveData(GlobalConstants.LAST_LEVEL, lastLevel);
+            }
+
             _coroutineRunner.StartCoroutine(StartGameCoroutine());
         }
 
