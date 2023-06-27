@@ -9,5 +9,6 @@ namespace _Scripts.Services.Database
         public const string LEVELS = "Levels";
         public const string LAST_LEVEL = "LastLevel";
         public const string GAME_DATA = "GameData";
+        public const string LEVEL_COUNTER = "LevelCounter";
     }
 }

@@ -19,7 +19,7 @@ namespace _Scripts.Installers
         private void BindLevelProgressController()
         {
             Container
-                .Bind<LevelProgressController>()
+                .BindInterfacesAndSelfTo<LevelProgressController>()
                 .FromNew()
                 .AsSingle()
                 .NonLazy();

@@ -1,6 +1,7 @@
 using _Scripts.UI.UIInfrastructure.BaseComponents;
 using _Scripts.UI.UIInfrastructure.ViewControllers;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -11,6 +12,7 @@ namespace _Scripts.UI.UIInfrastructure.Views
     {
         [SerializeField] private Image _fillImage;
         [SerializeField] private float _animationDuration;
+        [SerializeField] private TMP_Text _textLevelCounter;
         private float _maxValue = 1f;
         
         [Inject]
