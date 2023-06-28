@@ -39,5 +39,10 @@ namespace _Scripts.Player
                     bullet.SetDirection(hit.point);
             }
         }
+
+        private void OnDisable()
+        {
+            _inputService.OnTouched -= Shoot;
+        }
     }
 }
