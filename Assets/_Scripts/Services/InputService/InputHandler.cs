@@ -31,6 +31,11 @@ namespace _Scripts.Services.InputService
                     ReadMouseButton();
             }
         }
+        
+        public void Reset()
+        {
+            OnTouched = null;
+        }
 
         private void ReadMouseButton()
         {

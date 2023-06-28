@@ -1,36 +1,41 @@
 using System;
 using _Scripts.Services.EventBusService;
 using _Scripts.Services.EventBusService.EventsInterfaces;
+using _Scripts.Services.InputService;
 using UnityEngine;
+using Zenject;
 
 namespace _Scripts.Player
 {
     [RequireComponent(typeof(MovementBase))]
-    public class PlayerController : MonoBehaviour, 
-                                    ITarget,
-                                    IPlayerJumpSubscriber,
-                                    IPlayerMoveSubscriber,
-                                    IPlayerStopSubscriber
+    [RequireComponent(typeof(PlayerShoot))]
+    public class PlayerController : MonoBehaviour, ITarget, IRemoteControllable
     {
         [SerializeField] private float _speedXZ;
         [SerializeField] private float _speedY;
         
         private MovementBase _movement;
+        private PlayerShoot _shootComponent;
+        private IInputService _inputService;
+
+        [Inject]
+        private void Construct(IInputService inputService)
+        {
+            _inputService = inputService;
+        }
 
         private void Start()
         {
             _movement = GetComponent<MovementBase>();
-            EventBus.Subscribe(this);
+            _shootComponent = GetComponent<PlayerShoot>();
+
+            _inputService.OnTouched += Shoot;
         }
 
-        private void OnEnable()
+        private void Shoot(Vector3 position)
         {
-            EventBus.Subscribe(this);
-        }
-
-        private void OnDisable()
-        {
-            EventBus.Unsubscribe(this);
+            //if arms animation is playing return else play animation and shoot
+            _shootComponent.Shoot(position);
         }
 
         public Transform GetTarget()
@@ -38,19 +43,22 @@ namespace _Scripts.Player
             return transform;
         }
 
-        public void OnPlayerJumped()
+        public void Stop()
         {
-            _movement.SetSpeed(_speedY);
+            if(_movement)
+                _movement.SetSpeed(0);
         }
 
-        public void OnPlayerMove()
+        public void Move()
         {
-            _movement.SetSpeed(_speedXZ);
+            if(_movement)
+                _movement.SetSpeed(_speedXZ);
         }
 
-        public void OnPlayerStopped()
+        public void Jump()
         {
-            _movement.SetSpeed(0);
+            if(_movement)
+                _movement.SetSpeed(_speedY);
         }
     }
 }

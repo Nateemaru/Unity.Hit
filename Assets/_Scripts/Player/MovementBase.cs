@@ -6,6 +6,8 @@ namespace _Scripts.Player
     {
         protected float _speed;
 
+        public float Speed => _speed;
+
         public abstract void SetSpeed(float value);
     }
 }

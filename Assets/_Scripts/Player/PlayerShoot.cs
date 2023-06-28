@@ -13,20 +13,8 @@ namespace _Scripts.Player
         [SerializeField] private PoolObjectConfig _bullet;
         [SerializeField] private Transform _firePoint;
         [SerializeField] private LayerMask _targetMask;
-        private IInputService _inputService;
 
-        [Inject]
-        private void Construct(IInputService inputService)
-        {
-            _inputService = inputService;
-        }
-
-        private void Start()
-        {
-            _inputService.OnTouched += Shoot;
-        }
-
-        private void Shoot(Vector3 position)
+        public void Shoot(Vector3 position)
         {
             var ray = Camera.main.ScreenPointToRay(position);
             if (Physics.Raycast(ray, out var hit, Mathf.Infinity, _targetMask))
@@ -38,11 +26,6 @@ namespace _Scripts.Player
                 if(obj.TryGetComponent(out Bullet bullet))
                     bullet.SetDirection(hit.point);
             }
-        }
-
-        private void OnDisable()
-        {
-            _inputService.OnTouched -= Shoot;
         }
     }
 }

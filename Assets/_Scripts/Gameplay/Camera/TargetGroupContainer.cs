@@ -11,7 +11,9 @@ namespace _Scripts.Gameplay.Camera
     public class TargetGroupContainer : MonoBehaviour, IEnemyDiedSubscriber
     {
         private CinemachineTargetGroup _targetGroup;
+        private bool _isEmpty;
 
+        public bool IsEmpty => _isEmpty;
         public Action OnContainerIsEmpty;
 
         private void Start()
@@ -44,6 +46,7 @@ namespace _Scripts.Gameplay.Camera
             if(_targetGroup.m_Targets.Length <= 0)
             {
                 OnContainerIsEmpty?.Invoke();
+                _isEmpty = true;
                 EventBus.RaiseEvent<IEnemyGroupSubscriber>(item => item.OnGroupIsEmpty());
                 EventBus.Unsubscribe(this);
             }

@@ -8,7 +8,7 @@ using Zenject;
 
 namespace _Scripts.Gameplay.Camera
 { 
-    public class CameraTargetController : MonoBehaviour, IEnemyGroupSubscriber
+    public class CameraLookTargetChanger : MonoBehaviour, IEnemyGroupSubscriber
     {
         [SerializeField] private CinemachineTargetGroup[] _targetGroup;
 

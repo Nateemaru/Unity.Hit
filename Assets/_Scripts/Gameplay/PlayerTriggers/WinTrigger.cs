@@ -1,6 +1,4 @@
 using _Scripts.Player;
-using _Scripts.Services.StateMachines;
-using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
 using _Scripts.Services.StateMachines.LevelStateMachine;
 using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
 using UnityEngine;
@@ -20,8 +18,11 @@ namespace _Scripts.Gameplay.PlayerTriggers
         
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent(out MovementBase movementBase))
+            if(other.TryGetComponent(out IRemoteControllable movingController))
+            {
+                movingController.Stop();
                 _levelStateMachine.ChangeState<LevelWinState>();
+            }
         }
     }
 }
