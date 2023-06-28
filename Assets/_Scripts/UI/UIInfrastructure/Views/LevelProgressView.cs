@@ -24,6 +24,7 @@ namespace _Scripts.UI.UIInfrastructure.Views
         protected override void OnBound()
         {
             _viewController.OnLevelProgressChanged += ChangeFill;
+            _viewController.OnLevelCounterChanged += s => _textLevelCounter.text = $"Level {s}";
         }
 
         private void ChangeFill()

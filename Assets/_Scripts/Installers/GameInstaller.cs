@@ -3,6 +3,7 @@ using _Scripts.Gameplay;
 using _Scripts.Services.AudioSystem;
 using _Scripts.Services.CoroutineRunnerService;
 using _Scripts.Services.Database;
+using _Scripts.Services.InputService;
 using _Scripts.Services.PauseHandlerService;
 using _Scripts.Services.SceneLoadService;
 using _Scripts.Services.StateMachines;
@@ -36,8 +37,19 @@ namespace _Scripts.Installers
             BindFactories();
             BindProgressBarController();
             BindLevelContainerConfig();
+            BindInputService();
         }
-        
+
+        private void BindInputService()
+        {
+            Container
+                .Bind<IInputService>()
+                .To<InputHandler>()
+                .FromNewComponentOnNewGameObject()
+                .AsSingle()
+                .NonLazy();
+        }
+
         private void BindLevelContainerConfig()
         {
             Container

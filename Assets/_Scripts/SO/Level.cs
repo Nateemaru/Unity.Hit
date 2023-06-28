@@ -9,12 +9,10 @@ namespace _Scripts.SO
     {
         [SerializeField] private int _id;
         [JsonIgnore][SerializeField] private GameObject _prefab;
-
-        [HideInInspector][SerializeField]private bool _isCompleted;
+        [HideInInspector][SerializeField] private bool _isCompleted;
 
         public int ID => _id;
         [JsonIgnore] public GameObject Prefab => _prefab;
-
         public bool IsCompleted => _isCompleted;
 
         public void Complete() => _isCompleted = true;

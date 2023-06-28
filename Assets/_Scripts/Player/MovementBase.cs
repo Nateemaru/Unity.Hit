@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace _Scripts.Player
 {
-    public abstract class MovementBase : MonoBehaviour
+    public abstract class MovementBase : GameBehaviour
     {
         protected float _speed;
 
