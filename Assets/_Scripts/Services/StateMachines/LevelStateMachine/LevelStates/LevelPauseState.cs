@@ -21,13 +21,13 @@ namespace _Scripts.Services.StateMachines.LevelStateMachine.LevelStates
         public void Enter()
         {
             _pauseHandler.SetPause(true);
-            _audioController.SwitchSnapshot(GlobalConstants.PAUSE_SNAPSHOT);
+            _audioController.SwitchSnapshot(GlobalConstants.PAUSE_SNAPSHOT_KEY);
         }
 
         public void Exit()
         {
             _pauseHandler.SetPause(false);
-            _audioController.SwitchSnapshot(GlobalConstants.RUNNING_SNAPSHOT);
+            _audioController.SwitchSnapshot(GlobalConstants.RUNNING_SNAPSHOT_KEY);
         }
 
         public class Factory : PlaceholderFactory<IStateMachine, LevelPauseState>

@@ -106,7 +106,7 @@ namespace _Scripts.Installers
         private void BindAudioController()
         {
             Container
-                .Bind<AudioController>()
+                .BindInterfacesAndSelfTo<AudioController>()
                 .AsSingle()
                 .NonLazy();
         }

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: LevelsContainer
   m_EditorClassIdentifier: 
   _levels:
-  - _id: 0
-    _prefab: {fileID: 438594602624447592, guid: 38f0efdec3899c344b5e8bfb2a1317e3, type: 3}
   - _id: 1
+    _prefab: {fileID: 438594602624447592, guid: 38f0efdec3899c344b5e8bfb2a1317e3, type: 3}
+    _isCompleted: 0
+  - _id: 2
     _prefab: {fileID: 5200088063282663537, guid: de65278aeff7b1441a5606a00c60ba97, type: 3}
+    _isCompleted: 0

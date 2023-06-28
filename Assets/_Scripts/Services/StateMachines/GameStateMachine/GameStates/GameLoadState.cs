@@ -31,7 +31,7 @@ namespace _Scripts.Services.StateMachines.GameStateMachine.GameStates
             
             _fadeScreen.FadeIn(() =>
             {
-                _sceneLoadService.Load(GlobalConstants.GAME_SCENE, () =>
+                _sceneLoadService.Load(GlobalConstants.GAME_SCENE_KEY, () =>
                 {
                     _fadeScreen.FadeOut();
                     _gameStateMachine.ChangeState<GameRunState>();

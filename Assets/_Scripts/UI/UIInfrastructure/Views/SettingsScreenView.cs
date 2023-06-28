@@ -26,15 +26,17 @@ namespace _Scripts.UI.UIInfrastructure.Views
                 _viewController.OnCloseButtonClicked();
                 Hide();
             });
+            
             _openButton.onClick.AddListener(() =>
             {
                 _viewController.OnOpenButtonClicked();
                 Show();
             });
+                
             _volumeSlider
                 .onValueChanged
                 .AddListener(delegate {_viewController
-                    .OnSliderValueChanged(Mathf.Lerp(-80, 0, _volumeSlider.value));});
+                    .OnSliderValueChanged(_volumeSlider.value);});
         }
 
         private void Show() => gameObject.Enable();

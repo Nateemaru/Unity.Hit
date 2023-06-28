@@ -26,7 +26,7 @@ namespace _Scripts.UI.UIInfrastructure.ViewControllers
         {
             _enemiesHasher.OnEnemiesAmountChanged += () => OnLevelProgressChanged?.Invoke();
 
-            var level = _dataReader.GetData<Level>(GlobalConstants.LAST_LEVEL);
+            var level = _dataReader.GetData<Level>(GlobalConstants.LAST_LEVEL_KEY);
             _levelCounter = level.ID;
             
             OnLevelCounterChanged?.Invoke(_levelCounter.ToString());

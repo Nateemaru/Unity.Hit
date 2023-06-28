@@ -22,7 +22,7 @@ namespace _Scripts.Gameplay
         public void CreateLevel()
         {
             _currentLevel = _dataReader
-                .GetData<Level>(GlobalConstants.LAST_LEVEL);
+                .GetData<Level>(GlobalConstants.LAST_LEVEL_KEY);
             
             _factory.CreateGameObject(_levelsContainerConfig
                                                         .Levels

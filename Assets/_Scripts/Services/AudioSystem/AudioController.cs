@@ -1,12 +1,14 @@
+using System;
 using _Scripts.Services.Database;
 using _Scripts.Services.EventBusService;
 using _Scripts.Services.EventBusService.EventsInterfaces;
 using UnityEngine;
 using UnityEngine.Audio;
+using Zenject;
 
 namespace _Scripts.Services.AudioSystem
 {
-    public class AudioController
+    public class AudioController : IInitializable
     {
         private AudioMixer _mixer;
         private const float _SNAPSHOT_TRANSITION_TIME = 0.1f;
@@ -16,6 +18,10 @@ namespace _Scripts.Services.AudioSystem
         {
             _dataReader = dataReader;
             _mixer = Resources.Load<AudioMixer>("AudioMixer");
+        }
+
+        public void Initialize()
+        {
         }
 
         public void SwitchSnapshot(string snapshotName)

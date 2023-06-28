@@ -38,13 +38,13 @@ namespace _Scripts.Services.StateMachines.GameStateMachine.GameStates
 
         public void Enter()
         {
-            var levels = _dataReader.GetArrayData<Level>(GlobalConstants.LEVELS);
+            var levels = _dataReader.GetArrayData<Level>(GlobalConstants.LEVELS_KEY);
 
             if (levels.IsNullOrEmpty())
             {
-                _dataReader.SaveArrayData(GlobalConstants.LEVELS, _levelsContainerConfig.Levels);
+                _dataReader.SaveArrayData(GlobalConstants.LEVELS_KEY, _levelsContainerConfig.Levels);
                 var lastLevel = _levelsContainerConfig.Levels.First(item => !item.IsCompleted);
-                _dataReader.SaveData(GlobalConstants.LAST_LEVEL, lastLevel);
+                _dataReader.SaveData(GlobalConstants.LAST_LEVEL_KEY, lastLevel);
             }
 
             _coroutineRunner.StartCoroutine(StartGameCoroutine());
