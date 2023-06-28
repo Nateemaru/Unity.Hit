@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace _Scripts.Services.InputService
 { 
@@ -22,10 +23,13 @@ namespace _Scripts.Services.InputService
 
         private void Update()
         {
-            if (_isMobile)
-                ReadScreenTouches();
-            else
-                ReadMouseButton();
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                if (_isMobile)
+                    ReadScreenTouches();
+                else
+                    ReadMouseButton();
+            }
         }
 
         private void ReadMouseButton()
