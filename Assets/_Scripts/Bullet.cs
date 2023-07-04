@@ -16,7 +16,7 @@ namespace _Scripts
         [SerializeField] private TrailEffect _trail;
 
         [SerializeField] private bool _hasHitEffect;
-        [ShowIf("_hasHitEffect")] [SerializeField] private PoolObjectConfig _hitVfxEffect;
+        [ShowIf("_hasHitEffect")] [SerializeField] private GameObject _hitVfxEffect;
 
         [Inject]
         private void Construct(PauseHandler pauseHandler)

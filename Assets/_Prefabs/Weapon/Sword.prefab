@@ -188,7 +188,7 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: 7816e8f00cefffa45a5e5e0f4fb35e50, type: 2}
   _trail: {fileID: 6916963697949124926}
   _hasHitEffect: 1
-  _hitVfxEffect: {fileID: 11400000, guid: 0c82a4dd08fd2ba40800b07e0dffe766, type: 2}
+  _hitVfxEffect: {fileID: 2955134628076803504, guid: 4c4421cae908f334d9dfd15cd27e3531, type: 3}
 --- !u!114 &6916963697949124926
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ namespace _Scripts.Services
 {
     public class ObjectPool : MonoBehaviour
     {
-        [SerializeField] private PoolObjectConfig _config;
+        [SerializeField] private GameObject _prefab;
         [SerializeField] private Transform _container;
         [SerializeField] private bool _autoExpand;
         [SerializeField] private int _minCapacity;
@@ -21,7 +21,7 @@ namespace _Scripts.Services
         private bool _firstInitExecuted;
         private GameObjectFactory _factory;
 
-        public PoolObjectConfig Type => _config;
+        public string ObjectName => _prefab.name;
 
         [Inject]
         private void Construct(GameObjectFactory factory)
@@ -47,9 +47,9 @@ namespace _Scripts.Services
             _firstInitExecuted = true;
         }
 
-        public void InitPoolAfterStart(PoolObjectConfig type, Transform container, bool autoExpand, int minCapacity)
+        public void InitPoolAfterStart(GameObject prefab, Transform container, bool autoExpand, int minCapacity)
         {
-            _config = type;
+            _prefab = prefab;
             _container = container;
             _autoExpand = autoExpand;
             _minCapacity = minCapacity;
@@ -59,7 +59,7 @@ namespace _Scripts.Services
 
         private GameObject CreateObject(bool defaultCondition = false)
         {
-            var createdObject = _factory.CreateGameObject(_config.Prefab);
+            var createdObject = _factory.CreateGameObject(_prefab);
             createdObject.transform.parent = _container;
             createdObject.SetActive(defaultCondition);
             _pool.Add(createdObject);

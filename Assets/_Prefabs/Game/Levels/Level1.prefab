@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208994bcae2245048b9bd0571917295f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 11400000, guid: 10560d51f3d9b4649b6706e7bedb95c9, type: 2}
+  _bullet: {fileID: 5610448163023824801, guid: 55679cef49db35047953229bbcd084a2, type: 3}
   _hand: {fileID: 8685749809935396872}
   _firePoint: {fileID: 8350054323298040587}
   _targetMask:

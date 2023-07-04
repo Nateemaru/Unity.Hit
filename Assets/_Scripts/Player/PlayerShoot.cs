@@ -12,7 +12,7 @@ namespace _Scripts.Player
 {
     public class PlayerShoot : MonoBehaviour
     {
-        [SerializeField] private PoolObjectConfig _bullet;
+        private GameObject _weapon;
         [SerializeField] private Transform _hand;
         [SerializeField] private Transform _firePoint;
         [SerializeField] private LayerMask _targetMask;
@@ -28,7 +28,10 @@ namespace _Scripts.Player
 
         private void Start()
         {
-            Instantiate(_bullet.Prefab.transform.GetChild(0), _hand);
+            var weaponMetaData = _dataReader.GetData<WeaponMetaData>(GlobalConstants.CURRENT_WEAPON_DATA_KEY);
+            _weapon = _gameConfig.WeaponSkinContainer.WeaponConfigs.FirstOrDefault(item =>
+                item.MetaData.Name == weaponMetaData.Name)?.Prefab;
+            Instantiate(_weapon.transform?.GetChild(0), _hand);
         }
 
         public void Shoot(Vector3 position)
@@ -36,7 +39,7 @@ namespace _Scripts.Player
             var ray = Camera.main.ScreenPointToRay(position);
             if (Physics.Raycast(ray, out var hit, Mathf.Infinity, _targetMask))
             {
-                var obj = PoolHub.Instance.GetObject(_bullet);
+                var obj = PoolHub.Instance.GetObject(_weapon);
                         
                 obj.transform.localPosition = _firePoint.position;
                 obj.transform.LookAt(hit.point, Vector3.up);

@@ -10,7 +10,7 @@ namespace _Scripts.Services
     {
         private static PoolHub _instance;
         private ObjectPool[] _setupPools;
-        private Dictionary<PoolObjectConfig, ObjectPool> _pools;
+        private Dictionary<string, ObjectPool> _pools;
         private ObjectPool.Factory _factory;
 
         public static PoolHub Instance => _instance;
@@ -28,18 +28,18 @@ namespace _Scripts.Services
             else
                 _instance = this;
             
-            _pools = new Dictionary<PoolObjectConfig, ObjectPool>();
+            _pools = new Dictionary<string, ObjectPool>();
             _setupPools = GetComponentsInChildren<ObjectPool>();
 
             foreach (var pool in _setupPools)
             {
-                _pools.Add(pool.Type, pool);
+                _pools.Add(pool.ObjectName, pool);
             }
         }
     
-        private void CreatePool(PoolObjectConfig poolType, Transform parent = null)
+        private void CreatePool(GameObject prefab, Transform parent = null)
         {
-            if (_pools.ContainsKey(poolType))
+            if (_pools.ContainsKey(prefab.name))
                 return;
 
             ObjectPool newPool;
@@ -48,17 +48,17 @@ namespace _Scripts.Services
             newPool.transform.parent = transform;
             
             var container = parent != null ? parent : newPool.transform;
-            newPool.InitPoolAfterStart(poolType, container, true, 5);
+            newPool.InitPoolAfterStart(prefab, container, true, 5);
 
-            _pools.Add(poolType, newPool);
+            _pools.Add(prefab.name, newPool);
         }
 
-        public GameObject GetObject(PoolObjectConfig type, Transform parent = null)
+        public GameObject GetObject(GameObject prefab, Transform parent = null)
         {
-            if (!_pools.ContainsKey(type))
-                CreatePool(type, parent);
+            if (!_pools.ContainsKey(prefab.name))
+                CreatePool(prefab, parent);
 
-            return _pools[type].GetFreeObject();
+            return _pools[prefab.name].GetFreeObject();
         }
     }
 }
