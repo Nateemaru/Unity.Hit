@@ -1,9 +1,11 @@
+
+
 using System;
+using System.Linq;
 using _Scripts.Services;
-using _Scripts.Services.InputService;
+using _Scripts.Services.Database;
 using _Scripts.SO;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Zenject;
 
 namespace _Scripts.Player
@@ -11,8 +13,23 @@ namespace _Scripts.Player
     public class PlayerShoot : MonoBehaviour
     {
         [SerializeField] private PoolObjectConfig _bullet;
+        [SerializeField] private Transform _hand;
         [SerializeField] private Transform _firePoint;
         [SerializeField] private LayerMask _targetMask;
+        private IDataReader _dataReader;
+        private GameConfig _gameConfig;
+
+        [Inject]
+        private void Construct(IDataReader dataReader, GameConfig gameConfig)
+        {
+            _dataReader = dataReader;
+            _gameConfig = gameConfig;
+        }
+
+        private void Start()
+        {
+            Instantiate(_bullet.Prefab.transform.GetChild(0), _hand);
+        }
 
         public void Shoot(Vector3 position)
         {

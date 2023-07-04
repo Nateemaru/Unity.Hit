@@ -21,7 +21,7 @@ namespace _Scripts.Installers
     public class GameInstaller : MonoInstaller
     {
         [SerializeField] private GameObject _fader;
-        [SerializeField] private LevelsContainerConfig _levelsContainer;
+        [SerializeField] private GameConfig _gameConfig;
 
         public override void InstallBindings()
         {
@@ -36,7 +36,7 @@ namespace _Scripts.Installers
             BindGameStateMachine();
             BindFactories();
             BindProgressBarController();
-            BindLevelContainerConfig();
+            BindGameConfig();
             BindInputService();
         }
 
@@ -50,11 +50,11 @@ namespace _Scripts.Installers
                 .NonLazy();
         }
 
-        private void BindLevelContainerConfig()
+        private void BindGameConfig()
         {
             Container
-                .Bind<LevelsContainerConfig>()
-                .FromScriptableObject(_levelsContainer)
+                .Bind<GameConfig>()
+                .FromScriptableObject(_gameConfig)
                 .AsSingle()
                 .NonLazy();
         }
