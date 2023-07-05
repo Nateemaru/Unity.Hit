@@ -19,7 +19,7 @@ namespace _Scripts.UI.UIInfrastructure.ViewControllers
 
         public void OnSliderValueChanged(float value)
         {
-            _audioController.ChangeVolume(Mathf.Lerp(-80, 0, value));
+            _audioController.ChangeVolume(value);
         }
         
         public void OnCloseButtonClicked()

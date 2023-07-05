@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539523ce2e6b437383151c1979f5b4f4, type: 3}
   m_Name: SwordConfig
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _sprite: {fileID: 0}
+  _prefab: {fileID: 2676468884934052661, guid: 814bb9a1fb13a7a4e9ab7f6f43da52a2, type: 3}
+  _sprite: {fileID: -1937490363, guid: dcee7a94a2fd0ad41a0f0c5892958307, type: 3}
+  _metaData:
+    _name: Sword
+    _isAvailable: 0
+    _cost: 100

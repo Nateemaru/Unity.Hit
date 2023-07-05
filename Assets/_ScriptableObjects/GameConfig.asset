@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5462b4ddae446c986eddb1d1007f585, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  _defaultWeapon: {fileID: 11400000, guid: 8332fd631c0041741a617ba0cba09c29, type: 2}
+  _defaultWeapon: {fileID: 11400000, guid: 9c5bef82a1f90824fac32fc6fde2920f, type: 2}
   _levelsContainerConfig: {fileID: 11400000, guid: 89790f9e532df9e419a926d2b8613354, type: 2}
+  _weaponSkinContainer: {fileID: 11400000, guid: 47f2d0753be1cf8499edde87178f8a34, type: 2}

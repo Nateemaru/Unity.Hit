@@ -40,8 +40,5 @@ namespace _Scripts.UI.UIInfrastructure.Views
                 .AddListener(delegate {_viewController
                     .OnSliderValueChanged(_volumeSlider.value);});
         }
-
-        private void Show() => gameObject.Enable();
-        private void Hide() => gameObject.Disable();
     }
 }

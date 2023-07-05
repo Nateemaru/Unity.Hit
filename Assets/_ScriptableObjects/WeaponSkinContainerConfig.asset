@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1fb97d6bc244a68187d4019a450df4, type: 3}
   m_Name: WeaponSkinContainerConfig
   m_EditorClassIdentifier: 
-  _weaponConfigs: {fileID: 0}
+  _weaponConfigs:
+  - {fileID: 11400000, guid: 9c5bef82a1f90824fac32fc6fde2920f, type: 2}
+  - {fileID: 11400000, guid: 00e1aec6e9dda70448ce80089b7b11f1, type: 2}
