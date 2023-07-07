@@ -217,7 +217,7 @@ MonoBehaviour:
   worldPositionRelativeTransform: {fileID: 0}
   checkScreenPosition: 1
   minPixelDistance: 10
-  stepsBufferSize: 100
+  stepsBufferSize: 900
   maxStepsPerFrame: 1
   checkTime: 0
   timeInterval: 1
