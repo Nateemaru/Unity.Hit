@@ -9,7 +9,7 @@ using Zenject;
 
 namespace _Scripts.Gameplay
 {
-    public class GameBootstrapper : MonoBehaviour
+    public class GameStateMachineStarter : MonoBehaviour
     {
         private IGameStateMachine _gameStateMachine;
         private GameStartState.Factory _gameStartStateFactory;
@@ -34,7 +34,6 @@ namespace _Scripts.Gameplay
             _gameStateMachine.RegisterState(_gameStartStateFactory.Create(_gameStateMachine));
             _gameStateMachine.RegisterState(_gameLoadStateFactory.Create(_gameStateMachine));
             _gameStateMachine.RegisterState(_gameRunStateFactory.Create(_gameStateMachine));
-            
             _gameStateMachine.ChangeState<GameStartState>();
         }
     }

@@ -10,8 +10,9 @@ namespace _Scripts.Services.StateMachines.GameStateMachine
         private IState _currentGameState;
 
         public IStateMachine.StateChanged OnStateChanged { get; set; }
-        
-        public IState CurrentGameState => _currentGameState;
+
+
+        public IState CurrentState => _currentGameState;
 
         public GameStateMachine()
         {

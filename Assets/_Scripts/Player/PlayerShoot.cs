@@ -4,13 +4,15 @@ using System;
 using System.Linq;
 using _Scripts.Services;
 using _Scripts.Services.Database;
+using _Scripts.Services.EventBusService;
+using _Scripts.Services.EventBusService.EventsInterfaces;
 using _Scripts.SO;
 using UnityEngine;
 using Zenject;
 
 namespace _Scripts.Player
 {
-    public class PlayerShoot : MonoBehaviour
+    public class PlayerShoot : MonoBehaviour, IStorageDataUpdatedSubscriber
     {
         private GameObject _weapon;
         [SerializeField] private Transform _hand;
@@ -28,9 +30,24 @@ namespace _Scripts.Player
 
         private void Start()
         {
+            EquipWeapon();
+            EventBus.Subscribe(this);
+        }
+
+        private void OnDisable()
+        {
+            EventBus.Unsubscribe(this);
+        }
+
+        private void EquipWeapon()
+        {
             var weaponMetaData = _dataReader.GetData<WeaponMetaData>(GlobalConstants.CURRENT_WEAPON_DATA_KEY);
             _weapon = _gameConfig.WeaponSkinContainer.WeaponConfigs.FirstOrDefault(item =>
                 item.MetaData.Name == weaponMetaData.Name)?.Prefab;
+            
+            if(_hand.childCount > 0)
+                Destroy(_hand.GetChild(0).gameObject);
+            
             Instantiate(_weapon.transform?.GetChild(0), _hand);
         }
 
@@ -46,6 +63,11 @@ namespace _Scripts.Player
                 if(obj.TryGetComponent(out Bullet bullet))
                     bullet.SetDirection(hit.point);
             }
+        }
+
+        public void OnDataUpdated()
+        {
+            EquipWeapon();
         }
     }
 }

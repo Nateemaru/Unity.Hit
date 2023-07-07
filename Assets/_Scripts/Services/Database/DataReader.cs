@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using _Scripts.Services.EventBusService;
+using _Scripts.Services.EventBusService.EventsInterfaces;
 using UnityEngine;
 using Zenject;
 
@@ -20,11 +22,13 @@ namespace _Scripts.Services.Database
         public void SaveData<TData>(string key, TData data)
         {
             _storageService.Save(key, data);
+            EventBus.RaiseEvent<IStorageDataUpdatedSubscriber>(item => item.OnDataUpdated());
         }
         
         public void SaveArrayData<TData>(string key, TData[] data)
         {
             _storageService.SaveArray(key, data);
+            EventBus.RaiseEvent<IStorageDataUpdatedSubscriber>(item => item.OnDataUpdated());
         }
         
 
