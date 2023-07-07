@@ -14,6 +14,16 @@ namespace _Scripts.Installers
             BindLoseScreenController();
             BindLoadSceneButtonController();
             BindLevelProgressController();
+            BindWeaponItemsListController();
+        }
+
+        private void BindWeaponItemsListController()
+        {
+            Container
+                .Bind<WeaponItemsListController>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindLevelProgressController()

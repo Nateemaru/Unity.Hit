@@ -9,14 +9,14 @@ namespace _Scripts.Gameplay
     {
         private readonly GameObjectFactory _factory;
         private readonly IDataReader _dataReader;
-        private readonly LevelsContainerConfig _levelsContainerConfig;
+        private readonly GameConfig _gameConfig;
         private Level _currentLevel;
 
-        public LevelSpawner(GameObjectFactory factory, IDataReader dataReader, LevelsContainerConfig levelsContainerConfig)
+        public LevelSpawner(GameObjectFactory factory, IDataReader dataReader, GameConfig gameConfig)
         {
             _factory = factory;
             _dataReader = dataReader;
-            _levelsContainerConfig = levelsContainerConfig;
+            _gameConfig = gameConfig;
         }
 
         public void CreateLevel()
@@ -24,9 +24,10 @@ namespace _Scripts.Gameplay
             _currentLevel = _dataReader
                 .GetData<Level>(GlobalConstants.LAST_LEVEL_KEY);
             
-            _factory.CreateGameObject(_levelsContainerConfig
-                                                        .Levels
-                                                        .First(item => item.ID == _currentLevel.ID).Prefab);
+            _factory.CreateGameObject(_gameConfig
+                                        .LevelsContainerConfig
+                                        .Levels
+                                        .First(item => item.ID == _currentLevel.ID).Prefab);
         }
     }
 }

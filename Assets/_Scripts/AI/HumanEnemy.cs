@@ -29,17 +29,19 @@ namespace _Scripts.AI
             _fsm = new AIStateMachine();
             _fsm.SetState(idleState);
             
-            _fsm.AddAnyTransition(ragdollState, () => _puppetMaster.pinWeight < _maxPinWeight);
+            _fsm.AddAnyTransition(ragdollState, () => _isActive && _puppetMaster.pinWeight < _maxPinWeight);
             
-            _fsm.AddAnyTransition(idleState, () => _isActive && _fsm.CurrentState.IsAnimationEnded);
+            _fsm.AddAnyTransition(idleState, () => !_isActive && _fsm.CurrentState.IsAnimationEnded);
             
-            _fsm.AddAnyTransition(moveState, () => _target != null
-                                                   && _fsm.CurrentState.IsAnimationEnded
-                                                   && !transform.IsTargetNearby(_target.GetTarget(), _config.AttackDistance)
-                                                   && transform.IsTargetNearby(_target.GetTarget(), 14)
-                                                   && _puppetMaster.pinWeight >= _maxPinWeight);
+            _fsm.AddAnyTransition(moveState, () => _isActive
+                                                             && _target != null
+                                                             && _fsm.CurrentState.IsAnimationEnded
+                                                             && !transform.IsTargetNearby(_target.GetTarget(), _config.AttackDistance)
+                                                             && transform.IsTargetNearby(_target.GetTarget(), 14)
+                                                             && _puppetMaster.pinWeight >= _maxPinWeight);
             
-            _fsm.AddAnyTransition(attackState, () => _target != null 
+            _fsm.AddAnyTransition(attackState, () => _isActive
+                                                     && _target != null 
                                                      && transform.IsTargetNearby(_target.GetTarget(), _config.AttackDistance));
         }
     }

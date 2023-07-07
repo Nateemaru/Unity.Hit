@@ -184,4 +184,4 @@ MonoBehaviour:
   _explosionForce: 1000
   _explosionJumpForce: 200
   _radius: 5
-  _poolObjectConfig: {fileID: 11400000, guid: 254d7f033e931be4ebcb0cf8a12aaf70, type: 2}
+  _poolObjectConfig: {fileID: 180702, guid: 71baad66b6731184e9defc888c87397c, type: 3}

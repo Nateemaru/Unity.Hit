@@ -13,6 +13,8 @@ namespace _Scripts.Services.AudioSystem
         private AudioMixer _mixer;
         private const float _SNAPSHOT_TRANSITION_TIME = 0.1f;
         private IDataReader _dataReader;
+        private float _volume;
+        private float Volume => _volume;
 
         public AudioController(IDataReader dataReader)
         {
@@ -31,7 +33,8 @@ namespace _Scripts.Services.AudioSystem
 
         public void ChangeVolume(float volumeLevel)
         {
-            _mixer.SetFloat("Volume", volumeLevel);
+            _mixer.SetFloat("Volume", Mathf.Lerp(-80, 0, volumeLevel));
+            _mixer.GetFloat("Volume", out _volume);
         }
         
         public AudioMixerGroup FindSubgroup(string subgroupName)

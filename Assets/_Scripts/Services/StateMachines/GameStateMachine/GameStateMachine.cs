@@ -10,8 +10,10 @@ namespace _Scripts.Services.StateMachines.GameStateMachine
         private IState _currentGameState;
 
         public IStateMachine.StateChanged OnStateChanged { get; set; }
-        
-        public IState CurrentGameState => _currentGameState;
+
+
+        public IState CurrentState => _currentGameState;
+        public IState LastState { get; private set; }
 
         public GameStateMachine()
         {
@@ -28,6 +30,7 @@ namespace _Scripts.Services.StateMachines.GameStateMachine
             if (state != _currentGameState)
             {
                 _currentGameState?.Exit();
+                LastState = _currentGameState;
                 _currentGameState = state;
                 _currentGameState.Enter();
                 OnStateChanged?.Invoke(_currentGameState);

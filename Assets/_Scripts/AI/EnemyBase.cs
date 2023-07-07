@@ -79,5 +79,10 @@ namespace _Scripts.AI
                     _animancer.Playable.UnpauseGraph();
             }
         }
+
+        public void Provoke()
+        {
+            _isActive = true;
+        }
     }
 }

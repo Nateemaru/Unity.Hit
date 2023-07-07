@@ -1,3 +1,4 @@
+using _Scripts.CodeSugar;
 using UnityEngine;
 
 namespace _Scripts.UI.UIInfrastructure.BaseComponents
@@ -13,5 +14,8 @@ namespace _Scripts.UI.UIInfrastructure.BaseComponents
             _viewController = viewModel;
             OnBound();
         }
+
+        public void Show() => gameObject.Enable();
+        public void Hide() => gameObject.Disable();
     }
 }

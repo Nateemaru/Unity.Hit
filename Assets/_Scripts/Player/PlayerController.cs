@@ -29,7 +29,7 @@ namespace _Scripts.Player
             _movement = GetComponent<MovementBase>();
             _shootComponent = GetComponent<PlayerShoot>();
 
-            _inputService.OnTouched += Shoot;
+            _inputService.GetPositionOnTouched += Shoot;
         }
 
         private void Shoot(Vector3 position)

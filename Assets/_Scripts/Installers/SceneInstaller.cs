@@ -34,6 +34,7 @@ namespace _Scripts.Installers
             Container.BindFactory<IStateMachine, LevelPauseState, LevelPauseState.Factory>();
             Container.BindFactory<IStateMachine, LevelLoseState, LevelLoseState.Factory>();
             Container.BindFactory<IStateMachine, LevelWinState, LevelWinState.Factory>();
+            Container.BindFactory<IStateMachine, LevelStartState, LevelStartState.Factory>();
             
             Container.BindFactory<ObjectPool, ObjectPool.Factory>().FromNewComponentOnNewGameObject();
             Container.BindFactory<GameObject, GameObjectFactory>().FromFactory<GameObjectFactory>();

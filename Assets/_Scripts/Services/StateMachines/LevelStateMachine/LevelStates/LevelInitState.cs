@@ -1,5 +1,6 @@
 using _Scripts.Gameplay;
 using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
+using UnityEngine;
 using Zenject;
 
 namespace _Scripts.Services.StateMachines.LevelStateMachine.LevelStates
@@ -21,7 +22,7 @@ namespace _Scripts.Services.StateMachines.LevelStateMachine.LevelStates
         {
             _levelSpawner.CreateLevel();
             _cameraHasher.Cache();
-            _levelStateMachine.ChangeState<LevelRunState>();
+            _levelStateMachine.ChangeState<LevelStartState>();
         }
 
         public class Factory : PlaceholderFactory<IStateMachine, LevelInitState>

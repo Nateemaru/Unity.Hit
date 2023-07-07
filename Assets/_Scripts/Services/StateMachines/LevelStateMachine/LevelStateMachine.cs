@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _Scripts.Services.StateMachines.GameStateMachine.GameStates;
 using _Scripts.Services.StateMachines.LevelStateMachine.LevelStates;
+using UnityEngine;
 
 namespace _Scripts.Services.StateMachines.LevelStateMachine
 {
@@ -12,7 +13,8 @@ namespace _Scripts.Services.StateMachines.LevelStateMachine
 
         public IStateMachine.StateChanged OnStateChanged { get; set; }
         
-        public IState CurrentLevelState => _currentLevelState;
+        public IState CurrentState => _currentLevelState;
+        public IState LastState { get; private set; }
 
         public LevelStateMachine()
         {
@@ -29,6 +31,7 @@ namespace _Scripts.Services.StateMachines.LevelStateMachine
             if (state != _currentLevelState)
             {
                 _currentLevelState?.Exit();
+                LastState = _currentLevelState;
                 _currentLevelState = state;
                 _currentLevelState.Enter();
                 OnStateChanged?.Invoke(_currentLevelState);

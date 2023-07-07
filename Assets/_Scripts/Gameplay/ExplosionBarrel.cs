@@ -11,7 +11,7 @@ namespace _Scripts.Gameplay
         [SerializeField] private float _explosionForce;
         [SerializeField] private float _explosionJumpForce;
         [SerializeField] private float _radius;
-        [SerializeField] private PoolObjectConfig _poolObjectConfig;
+        [SerializeField] private GameObject _poolObjectConfig;
         
         private Rigidbody _rb;
 

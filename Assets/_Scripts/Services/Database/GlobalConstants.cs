@@ -10,5 +10,7 @@ namespace _Scripts.Services.Database
         public const string LAST_LEVEL_KEY = "LastLevel";
         public const string GAME_DATA_KEY = "GameData";
         public const string LEVEL_COUNTER_KEY = "LevelCounter";
+        public const string CURRENT_WEAPON_DATA_KEY = "CurrentWeaponData";
+        public const string WEAPON_DATA_CONTAINER_KEY = "WeaponDataContainer";
     }
 }
